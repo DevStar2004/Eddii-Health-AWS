@@ -1,0 +1,179 @@
+{
+    "name": "Guess",
+    "identifier": "",
+    "description": null,
+    "slotTypeName": "AMAZON.AlphaNumeric",
+    "obfuscationSetting": { "obfuscationSettingType": "None" },
+    "valueElicitationSetting": {
+        "slotCaptureSetting": {
+            "codeHook": null,
+            "captureResponse": {
+                "messageGroupsList": [
+                    {
+                        "message": {
+                            "ssmlMessage": null,
+                            "customPayload": null,
+                            "plainTextMessage": { "value": "Okay, got it." },
+                            "imageResponseCard": null
+                        },
+                        "variations": null
+                    }
+                ],
+                "allowInterrupt": true
+            },
+            "captureNextStep": {
+                "sessionAttributes": null,
+                "intent": { "name": null, "slots": null },
+                "dialogAction": {
+                    "type": "EndConversation",
+                    "slotToElicit": null,
+                    "suppressNextMessage": null
+                }
+            },
+            "captureConditional": null,
+            "failureResponse": null,
+            "failureNextStep": {
+                "sessionAttributes": null,
+                "intent": { "name": "FallbackIntent", "slots": null },
+                "dialogAction": {
+                    "type": "StartIntent",
+                    "slotToElicit": null,
+                    "suppressNextMessage": null
+                }
+            },
+            "failureConditional": null,
+            "elicitationCodeHook": {
+                "invocationLabel": null,
+                "enableCodeHookInvocation": true
+            }
+        },
+        "promptSpecification": {
+            "messageGroupsList": [
+                {
+                    "message": {
+                        "ssmlMessage": null,
+                        "customPayload": null,
+                        "plainTextMessage": { "value": "What is your guess?" },
+                        "imageResponseCard": null
+                    },
+                    "variations": null
+                }
+            ],
+            "maxRetries": 4,
+            "allowInterrupt": true,
+            "messageSelectionStrategy": "Random",
+            "promptAttemptsSpecification": {
+                "Retry4": {
+                    "allowedInputTypes": {
+                        "allowAudioInput": true,
+                        "allowDTMFInput": true
+                    },
+                    "audioAndDTMFInputSpecification": {
+                        "dtmfSpecification": {
+                            "maxLength": 513,
+                            "deletionCharacter": "*",
+                            "endCharacter": "#",
+                            "endTimeoutMs": 5000
+                        },
+                        "startTimeoutMs": 4000,
+                        "audioSpecification": {
+                            "maxLengthMs": 15000,
+                            "endTimeoutMs": 640
+                        }
+                    },
+                    "allowInterrupt": true,
+                    "textInputSpecification": { "startTimeoutMs": 30000 }
+                },
+                "Retry3": {
+                    "allowedInputTypes": {
+                        "allowAudioInput": true,
+                        "allowDTMFInput": true
+                    },
+                    "audioAndDTMFInputSpecification": {
+                        "dtmfSpecification": {
+                            "maxLength": 513,
+                            "deletionCharacter": "*",
+                            "endCharacter": "#",
+                            "endTimeoutMs": 5000
+                        },
+                        "startTimeoutMs": 4000,
+                        "audioSpecification": {
+                            "maxLengthMs": 15000,
+                            "endTimeoutMs": 640
+                        }
+                    },
+                    "allowInterrupt": true,
+                    "textInputSpecification": { "startTimeoutMs": 30000 }
+                },
+                "Retry1": {
+                    "allowedInputTypes": {
+                        "allowAudioInput": true,
+                        "allowDTMFInput": true
+                    },
+                    "audioAndDTMFInputSpecification": {
+                        "dtmfSpecification": {
+                            "maxLength": 513,
+                            "deletionCharacter": "*",
+                            "endCharacter": "#",
+                            "endTimeoutMs": 5000
+                        },
+                        "startTimeoutMs": 4000,
+                        "audioSpecification": {
+                            "maxLengthMs": 15000,
+                            "endTimeoutMs": 640
+                        }
+                    },
+                    "allowInterrupt": true,
+                    "textInputSpecification": { "startTimeoutMs": 30000 }
+                },
+                "Initial": {
+                    "allowedInputTypes": {
+                        "allowAudioInput": true,
+                        "allowDTMFInput": true
+                    },
+                    "audioAndDTMFInputSpecification": {
+                        "dtmfSpecification": {
+                            "maxLength": 513,
+                            "deletionCharacter": "*",
+                            "endCharacter": "#",
+                            "endTimeoutMs": 5000
+                        },
+                        "startTimeoutMs": 4000,
+                        "audioSpecification": {
+                            "maxLengthMs": 15000,
+                            "endTimeoutMs": 640
+                        }
+                    },
+                    "allowInterrupt": true,
+                    "textInputSpecification": { "startTimeoutMs": 30000 }
+                },
+                "Retry2": {
+                    "allowedInputTypes": {
+                        "allowAudioInput": true,
+                        "allowDTMFInput": true
+                    },
+                    "audioAndDTMFInputSpecification": {
+                        "dtmfSpecification": {
+                            "maxLength": 513,
+                            "deletionCharacter": "*",
+                            "endCharacter": "#",
+                            "endTimeoutMs": 5000
+                        },
+                        "startTimeoutMs": 4000,
+                        "audioSpecification": {
+                            "maxLengthMs": 15000,
+                            "endTimeoutMs": 640
+                        }
+                    },
+                    "allowInterrupt": true,
+                    "textInputSpecification": { "startTimeoutMs": 30000 }
+                }
+            }
+        },
+        "slotConstraint": "Required",
+        "defaultValueSpecification": null,
+        "sampleUtterances": null,
+        "waitAndContinueSpecification": null
+    },
+    "multipleValuesSetting": null
+}

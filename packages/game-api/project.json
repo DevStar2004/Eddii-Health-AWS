@@ -1,0 +1,78 @@
+{
+    "name": "game-api",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "packages/game-api/src",
+    "projectType": "application",
+    "targets": {
+        "build": {
+            "executor": "@nx/webpack:webpack",
+            "outputs": ["{options.outputPath}"],
+            "defaultConfiguration": "production",
+            "options": {
+                "target": "node",
+                "compiler": "tsc",
+                "externalDependencies": "none",
+                "outputPath": "dist/packages/game-api",
+                "main": "packages/game-api/src/main.ts",
+                "tsConfig": "packages/game-api/tsconfig.app.json",
+                "isolatedConfig": true,
+                "webpackConfig": "packages/game-api/webpack.config.js"
+            },
+            "configurations": {
+                "development": {},
+                "production": {}
+            }
+        },
+        "build-local-runner": {
+            "executor": "@nx/webpack:webpack",
+            "outputs": ["{options.outputPath}"],
+            "defaultConfiguration": "development",
+            "options": {
+                "target": "node",
+                "compiler": "tsc",
+                "outputPath": "dist/packages/game-api/local-runner",
+                "main": "packages/game-api/local-runner.ts",
+                "tsConfig": "packages/game-api/tsconfig.app.json",
+                "isolatedConfig": true,
+                "webpackConfig": "packages/game-api/webpack.config.js"
+            },
+            "configurations": {
+                "development": {}
+            }
+        },
+        "serve": {
+            "executor": "@nx/js:node",
+            "defaultConfiguration": "development",
+            "options": {
+                "buildTarget": "game-api:build-local-runner"
+            },
+            "configurations": {
+                "development": {
+                    "buildTarget": "game-api:build-local-runner:development"
+                }
+            }
+        },
+        "lint": {
+            "executor": "@nx/linter:eslint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": ["packages/game-api/**/*.ts"]
+            }
+        },
+        "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+            "options": {
+                "jestConfig": "packages/game-api/jest.config.ts",
+                "passWithNoTests": true
+            },
+            "configurations": {
+                "ci": {
+                    "ci": true,
+                    "codeCoverage": true
+                }
+            }
+        }
+    },
+    "tags": []
+}

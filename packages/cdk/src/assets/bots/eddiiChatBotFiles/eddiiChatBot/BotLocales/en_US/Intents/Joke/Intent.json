@@ -1,0 +1,279 @@
+{
+    "name": "Joke",
+    "identifier": "",
+    "description": null,
+    "parentIntentSignature": null,
+    "sampleUtterances": [
+        { "utterance": "tell me a joke." },
+        { "utterance": "i would like to hear a joke." },
+        { "utterance": "do you know any good jokes?" },
+        { "utterance": "could you tell me a funny joke?" },
+        { "utterance": "please tell me a joke to make me laugh." },
+        { "utterance": "let me hear a hilarious joke." },
+        { "utterance": "i want to hear a joke." },
+        { "utterance": "say something funny to make me laugh." },
+        { "utterance": "give me a good joke." },
+        { "utterance": "make me laugh with a joke." },
+        { "utterance": "hit me with your best joke." },
+        { "utterance": "know any jokes that'll make me crack up?" },
+        { "utterance": "i need a laugh, tell me a joke." },
+        { "utterance": "what's a funny joke you've heard recently?" },
+        { "utterance": "craving a good laugh, any jokes?" },
+        { "utterance": "share a joke that made you laugh." },
+        { "utterance": "looking for a chuckle, got a joke?" },
+        { "utterance": "i love jokes, tell me one." },
+        { "utterance": "what's the funniest joke you know?" },
+        { "utterance": "got a joke to lighten the mood?" },
+        { "utterance": "i'm all ears for a funny joke." },
+        { "utterance": "what joke always makes you laugh?" },
+        { "utterance": "i'm in need of a good laugh, any jokes?" },
+        { "utterance": "tell me a joke that's sure to make me smile." },
+        { "utterance": "got any hilariously bad jokes?" },
+        { "utterance": "what's a joke that never fails?" },
+        { "utterance": "share a joke that'll brighten my day." },
+        { "utterance": "i could use a good joke, know any?" },
+        { "utterance": "what's your favorite joke to tell?" },
+        { "utterance": "let's hear a joke that'll make us laugh." },
+        { "utterance": "got a joke that's a guaranteed laugh?" },
+        { "utterance": "i'm in the mood for a funny joke, any ideas?" },
+        { "utterance": "tell me a joke to cheer me up." },
+        { "utterance": "what joke do you always remember?" },
+        { "utterance": "know any short, funny jokes?" },
+        { "utterance": "i need a quick laugh, tell me a joke." },
+        { "utterance": "share your go-to joke." },
+        { "utterance": "got a joke that's good for a quick laugh?" },
+        { "utterance": "what's a classic joke you love?" },
+        {
+            "utterance": "i'm looking for a joke to tell my friend, any suggestions?"
+        },
+        { "utterance": "what's a joke that always gets a reaction?" },
+        { "utterance": "share a joke that's perfect for any audience." },
+        { "utterance": "i need a really funny joke, got one?" },
+        { "utterance": "what's a joke you can't hear without laughing?" },
+        { "utterance": "tell me a joke that's unexpectedly funny." },
+        { "utterance": "what's a joke that took you a minute to get?" },
+        { "utterance": "got a joke that's both smart and funny?" },
+        { "utterance": "i love puns, got any punny jokes?" },
+        { "utterance": "what's a joke that's so bad, it's good?" },
+        { "utterance": "share a joke that makes everyone groan but laugh." }
+    ],
+    "intentConfirmationSetting": {
+        "isActive": true,
+        "promptSpecification": {
+            "messageGroupsList": [
+                {
+                    "message": {
+                        "ssmlMessage": null,
+                        "customPayload": null,
+                        "plainTextMessage": { "value": "Want another joke?" },
+                        "imageResponseCard": null
+                    },
+                    "variations": null
+                }
+            ],
+            "maxRetries": 4,
+            "allowInterrupt": true,
+            "messageSelectionStrategy": "Random",
+            "promptAttemptsSpecification": {
+                "Retry2": {
+                    "allowedInputTypes": {
+                        "allowAudioInput": true,
+                        "allowDTMFInput": true
+                    },
+                    "audioAndDTMFInputSpecification": {
+                        "dtmfSpecification": {
+                            "maxLength": 513,
+                            "deletionCharacter": "*",
+                            "endCharacter": "#",
+                            "endTimeoutMs": 5000
+                        },
+                        "startTimeoutMs": 4000,
+                        "audioSpecification": {
+                            "maxLengthMs": 15000,
+                            "endTimeoutMs": 640
+                        }
+                    },
+                    "allowInterrupt": true,
+                    "textInputSpecification": { "startTimeoutMs": 30000 }
+                },
+                "Initial": {
+                    "allowedInputTypes": {
+                        "allowAudioInput": true,
+                        "allowDTMFInput": true
+                    },
+                    "audioAndDTMFInputSpecification": {
+                        "dtmfSpecification": {
+                            "maxLength": 513,
+                            "deletionCharacter": "*",
+                            "endCharacter": "#",
+                            "endTimeoutMs": 5000
+                        },
+                        "startTimeoutMs": 4000,
+                        "audioSpecification": {
+                            "maxLengthMs": 15000,
+                            "endTimeoutMs": 640
+                        }
+                    },
+                    "allowInterrupt": true,
+                    "textInputSpecification": { "startTimeoutMs": 30000 }
+                },
+                "Retry4": {
+                    "allowedInputTypes": {
+                        "allowAudioInput": true,
+                        "allowDTMFInput": true
+                    },
+                    "audioAndDTMFInputSpecification": {
+                        "dtmfSpecification": {
+                            "maxLength": 513,
+                            "deletionCharacter": "*",
+                            "endCharacter": "#",
+                            "endTimeoutMs": 5000
+                        },
+                        "startTimeoutMs": 4000,
+                        "audioSpecification": {
+                            "maxLengthMs": 15000,
+                            "endTimeoutMs": 640
+                        }
+                    },
+                    "allowInterrupt": true,
+                    "textInputSpecification": { "startTimeoutMs": 30000 }
+                },
+                "Retry3": {
+                    "allowedInputTypes": {
+                        "allowAudioInput": true,
+                        "allowDTMFInput": true
+                    },
+                    "audioAndDTMFInputSpecification": {
+                        "dtmfSpecification": {
+                            "maxLength": 513,
+                            "deletionCharacter": "*",
+                            "endCharacter": "#",
+                            "endTimeoutMs": 5000
+                        },
+                        "startTimeoutMs": 4000,
+                        "audioSpecification": {
+                            "maxLengthMs": 15000,
+                            "endTimeoutMs": 640
+                        }
+                    },
+                    "allowInterrupt": true,
+                    "textInputSpecification": { "startTimeoutMs": 30000 }
+                },
+                "Retry1": {
+                    "allowedInputTypes": {
+                        "allowAudioInput": true,
+                        "allowDTMFInput": true
+                    },
+                    "audioAndDTMFInputSpecification": {
+                        "dtmfSpecification": {
+                            "maxLength": 513,
+                            "deletionCharacter": "*",
+                            "endCharacter": "#",
+                            "endTimeoutMs": 5000
+                        },
+                        "startTimeoutMs": 4000,
+                        "audioSpecification": {
+                            "maxLengthMs": 15000,
+                            "endTimeoutMs": 640
+                        }
+                    },
+                    "allowInterrupt": true,
+                    "textInputSpecification": { "startTimeoutMs": 30000 }
+                }
+            }
+        },
+        "declinationResponse": null,
+        "failureNextStep": {
+            "sessionAttributes": {},
+            "dialogAction": {
+                "type": "StartIntent",
+                "slotToElicit": null,
+                "suppressNextMessage": null
+            },
+            "intent": { "name": "FallbackIntent", "slots": {} }
+        },
+        "elicitationCodeHook": {
+            "enableCodeHookInvocation": true,
+            "invocationLabel": null
+        },
+        "confirmationNextStep": {
+            "sessionAttributes": {},
+            "dialogAction": {
+                "type": "StartIntent",
+                "slotToElicit": null,
+                "suppressNextMessage": null
+            },
+            "intent": { "name": null, "slots": {} }
+        },
+        "declinationNextStep": {
+            "sessionAttributes": {},
+            "dialogAction": {
+                "type": "EndConversation",
+                "slotToElicit": null,
+                "suppressNextMessage": null
+            },
+            "intent": { "name": null, "slots": {} }
+        }
+    },
+    "intentClosingSetting": null,
+    "initialResponseSetting": {
+        "conditional": null,
+        "codeHook": {
+            "isActive": true,
+            "enableCodeHookInvocation": true,
+            "invocationLabel": null,
+            "postCodeHookSpecification": {
+                "failureResponse": null,
+                "failureNextStep": {
+                    "sessionAttributes": {},
+                    "dialogAction": {
+                        "type": "EndConversation",
+                        "slotToElicit": null,
+                        "suppressNextMessage": null
+                    },
+                    "intent": { "name": null, "slots": {} }
+                },
+                "failureConditional": null,
+                "successResponse": null,
+                "successNextStep": {
+                    "sessionAttributes": {},
+                    "dialogAction": {
+                        "type": "ElicitSlot",
+                        "slotToElicit": "Guess",
+                        "suppressNextMessage": null
+                    },
+                    "intent": { "name": null, "slots": {} }
+                },
+                "successConditional": null,
+                "timeoutResponse": null,
+                "timeoutNextStep": {
+                    "sessionAttributes": {},
+                    "dialogAction": {
+                        "type": "EndConversation",
+                        "slotToElicit": null,
+                        "suppressNextMessage": null
+                    },
+                    "intent": { "name": null, "slots": {} }
+                },
+                "timeoutConditional": null
+            }
+        },
+        "nextStep": {
+            "sessionAttributes": {},
+            "dialogAction": {
+                "type": "InvokeDialogCodeHook",
+                "slotToElicit": null,
+                "suppressNextMessage": null
+            },
+            "intent": { "name": null, "slots": {} }
+        },
+        "initialResponse": null
+    },
+    "inputContexts": null,
+    "outputContexts": null,
+    "kendraConfiguration": null,
+    "qnAIntentConfiguration": null,
+    "dialogCodeHook": { "enabled": true },
+    "fulfillmentCodeHook": null,
+    "slotPriorities": [{ "priority": 1, "slotName": "Guess" }]
+}

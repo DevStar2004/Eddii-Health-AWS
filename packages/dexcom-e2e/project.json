@@ -1,0 +1,32 @@
+{
+    "name": "dexcom-e2e",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "implicitDependencies": ["dexcom"],
+    "targets": {
+        "build": {
+            "executor": "@nx/js:tsc",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "outputPath": "dist/packages/dexcom-e2e",
+                "main": "packages/dexcom-e2e/src/dexcom/dexcom.spec.ts",
+                "tsConfig": "packages/dexcom-e2e/tsconfig.spec.json",
+                "assets": ["packages/dexcom-e2e/*.md"]
+            }
+        },
+        "e2e": {
+            "executor": "@nx/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/{e2eProjectRoot}"],
+            "options": {
+                "jestConfig": "packages/dexcom-e2e/jest.config.ts",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nx/linter:eslint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": ["packages/dexcom-e2e/**/*.{js,ts}"]
+            }
+        }
+    }
+}

@@ -1,0 +1,451 @@
+{
+    "name": "Feelings",
+    "identifier": "",
+    "description": null,
+    "parentIntentSignature": null,
+    "sampleUtterances": [
+        {
+            "utterance": "i feel overwhelmed."
+        },
+        {
+            "utterance": "i'm struggling with my emotions."
+        },
+        {
+            "utterance": "i feel sad and don't know why."
+        },
+        {
+            "utterance": "i feel hopeless."
+        },
+        {
+            "utterance": "i feel anxious without any reason."
+        },
+        {
+            "utterance": "i'm having trouble controlling my thoughts."
+        },
+        {
+            "utterance": "i don't feel good about myself."
+        },
+        {
+            "utterance": "i'm constantly worried."
+        },
+        {
+            "utterance": "i can't shake off my negative thoughts."
+        },
+        {
+            "utterance": "my emotions are affecting my daily life."
+        },
+        {
+            "utterance": "i need help managing my anger."
+        },
+        {
+            "utterance": "i feel very down and need to talk."
+        },
+        {
+            "utterance": "i find it hard to cope with stress."
+        },
+        {
+            "utterance": "i'm feeling lost and need guidance."
+        },
+        {
+            "utterance": "i'm having a hard time dealing with loss."
+        },
+        {
+            "utterance": "i feel like my anxiety is taking over."
+        },
+        {
+            "utterance": "i'm struggling with feelings of worthlessness."
+        },
+        {
+            "utterance": "i'm often in a bad mood for no reason."
+        },
+        {
+            "utterance": "i'm having difficulties with my self-esteem."
+        },
+        {
+            "utterance": "i can't stop feeling guilty."
+        },
+        {
+            "utterance": "i'm tired of feeling pessimistic."
+        },
+        {
+            "utterance": "i'm experiencing a lot of inner turmoil."
+        },
+        {
+            "utterance": "i feel disconnected from everything around me."
+        },
+        {
+            "utterance": "i'm having panic attacks and need help."
+        },
+        {
+            "utterance": "i don't know how to deal with my sadness."
+        },
+        {
+            "utterance": "i'm finding it hard to enjoy life."
+        },
+        {
+            "utterance": "my negative thoughts are overwhelming me."
+        },
+        {
+            "utterance": "i feel paralyzed by my fear."
+        },
+        {
+            "utterance": "i'm struggling to find happiness in anything."
+        },
+        {
+            "utterance": "i'm having a hard time getting out of bed."
+        },
+        {
+            "utterance": "i'm constantly feeling nervous and jittery."
+        },
+        {
+            "utterance": "i need techniques to manage my stress levels."
+        },
+        {
+            "utterance": "i feel like my thoughts are spiraling out of control."
+        },
+        {
+            "utterance": "i'm facing challenges in controlling my emotions."
+        },
+        {
+            "utterance": "i have a constant sense of dread."
+        },
+        {
+            "utterance": "i'm always expecting the worst to happen."
+        },
+        {
+            "utterance": "i struggle with feelings of detachment and alienation."
+        },
+        {
+            "utterance": "i want to learn how to stop overthinking."
+        },
+        {
+            "utterance": "i need help dealing with my grief."
+        },
+        {
+            "utterance": "i want to understand why i feel so empty."
+        },
+        {
+            "utterance": "i'm looking for ways to cope with my emotional pain."
+        },
+        {
+            "utterance": "i feel like i'm stuck in a cycle of negativity."
+        },
+        {
+            "utterance": "i need assistance in overcoming my fears."
+        },
+        {
+            "utterance": "i want to change my pattern of negative thinking."
+        },
+        {
+            "utterance": "i feel burdened by my constant worry."
+        },
+        {
+            "utterance": "i feel happy and content."
+        },
+        {
+            "utterance": "i'm feeling joyful and excited."
+        },
+        {
+            "utterance": "i feel grateful and blessed."
+        },
+        {
+            "utterance": "i'm feeling proud of my achievements."
+        },
+        {
+            "utterance": "i feel calm and at peace."
+        },
+        {
+            "utterance": "i'm feeling confident and strong."
+        },
+        {
+            "utterance": "i feel loved and appreciated."
+        },
+        {
+            "utterance": "i'm feeling hopeful about the future."
+        },
+        {
+            "utterance": "i feel relaxed and at ease."
+        },
+        {
+            "utterance": "i'm feeling enthusiastic and motivated."
+        },
+        {
+            "utterance": "i want to talk about my feelings."
+        },
+        {
+            "utterance": "i need someone to listen to my feelings."
+        },
+        {
+            "utterance": "i feel better when I talk about my feelings."
+        },
+        {
+            "utterance": "i'm looking for someone to share my feelings with."
+        },
+        {
+            "utterance": "i need to express my feelings."
+        }
+    ],
+    "intentConfirmationSetting": {
+        "isActive": true,
+        "promptSpecification": {
+            "messageGroupsList": [
+                {
+                    "message": {
+                        "ssmlMessage": null,
+                        "customPayload": null,
+                        "plainTextMessage": {
+                            "value": "Want to try this again?"
+                        },
+                        "imageResponseCard": null
+                    },
+                    "variations": null
+                }
+            ],
+            "maxRetries": 4,
+            "allowInterrupt": true,
+            "messageSelectionStrategy": "Random",
+            "promptAttemptsSpecification": {
+                "Retry2": {
+                    "allowedInputTypes": {
+                        "allowAudioInput": true,
+                        "allowDTMFInput": true
+                    },
+                    "audioAndDTMFInputSpecification": {
+                        "dtmfSpecification": {
+                            "maxLength": 513,
+                            "deletionCharacter": "*",
+                            "endCharacter": "#",
+                            "endTimeoutMs": 5000
+                        },
+                        "startTimeoutMs": 4000,
+                        "audioSpecification": {
+                            "maxLengthMs": 15000,
+                            "endTimeoutMs": 640
+                        }
+                    },
+                    "allowInterrupt": true,
+                    "textInputSpecification": {
+                        "startTimeoutMs": 30000
+                    }
+                },
+                "Initial": {
+                    "allowedInputTypes": {
+                        "allowAudioInput": true,
+                        "allowDTMFInput": true
+                    },
+                    "audioAndDTMFInputSpecification": {
+                        "dtmfSpecification": {
+                            "maxLength": 513,
+                            "deletionCharacter": "*",
+                            "endCharacter": "#",
+                            "endTimeoutMs": 5000
+                        },
+                        "startTimeoutMs": 4000,
+                        "audioSpecification": {
+                            "maxLengthMs": 15000,
+                            "endTimeoutMs": 640
+                        }
+                    },
+                    "allowInterrupt": true,
+                    "textInputSpecification": {
+                        "startTimeoutMs": 30000
+                    }
+                },
+                "Retry4": {
+                    "allowedInputTypes": {
+                        "allowAudioInput": true,
+                        "allowDTMFInput": true
+                    },
+                    "audioAndDTMFInputSpecification": {
+                        "dtmfSpecification": {
+                            "maxLength": 513,
+                            "deletionCharacter": "*",
+                            "endCharacter": "#",
+                            "endTimeoutMs": 5000
+                        },
+                        "startTimeoutMs": 4000,
+                        "audioSpecification": {
+                            "maxLengthMs": 15000,
+                            "endTimeoutMs": 640
+                        }
+                    },
+                    "allowInterrupt": true,
+                    "textInputSpecification": {
+                        "startTimeoutMs": 30000
+                    }
+                },
+                "Retry3": {
+                    "allowedInputTypes": {
+                        "allowAudioInput": true,
+                        "allowDTMFInput": true
+                    },
+                    "audioAndDTMFInputSpecification": {
+                        "dtmfSpecification": {
+                            "maxLength": 513,
+                            "deletionCharacter": "*",
+                            "endCharacter": "#",
+                            "endTimeoutMs": 5000
+                        },
+                        "startTimeoutMs": 4000,
+                        "audioSpecification": {
+                            "maxLengthMs": 15000,
+                            "endTimeoutMs": 640
+                        }
+                    },
+                    "allowInterrupt": true,
+                    "textInputSpecification": {
+                        "startTimeoutMs": 30000
+                    }
+                },
+                "Retry1": {
+                    "allowedInputTypes": {
+                        "allowAudioInput": true,
+                        "allowDTMFInput": true
+                    },
+                    "audioAndDTMFInputSpecification": {
+                        "dtmfSpecification": {
+                            "maxLength": 513,
+                            "deletionCharacter": "*",
+                            "endCharacter": "#",
+                            "endTimeoutMs": 5000
+                        },
+                        "startTimeoutMs": 4000,
+                        "audioSpecification": {
+                            "maxLengthMs": 15000,
+                            "endTimeoutMs": 640
+                        }
+                    },
+                    "allowInterrupt": true,
+                    "textInputSpecification": {
+                        "startTimeoutMs": 30000
+                    }
+                }
+            }
+        },
+        "declinationResponse": null,
+        "failureNextStep": {
+            "sessionAttributes": {},
+            "dialogAction": {
+                "type": "StartIntent",
+                "slotToElicit": null,
+                "suppressNextMessage": null
+            },
+            "intent": {
+                "name": "FallbackIntent",
+                "slots": {}
+            }
+        },
+        "elicitationCodeHook": {
+            "enableCodeHookInvocation": true,
+            "invocationLabel": null
+        },
+        "confirmationNextStep": {
+            "sessionAttributes": {},
+            "dialogAction": {
+                "type": "StartIntent",
+                "slotToElicit": null,
+                "suppressNextMessage": null
+            },
+            "intent": {
+                "name": null,
+                "slots": {}
+            }
+        },
+        "declinationNextStep": {
+            "sessionAttributes": {},
+            "dialogAction": {
+                "type": "EndConversation",
+                "slotToElicit": null,
+                "suppressNextMessage": null
+            },
+            "intent": {
+                "name": null,
+                "slots": {}
+            }
+        }
+    },
+    "intentClosingSetting": null,
+    "initialResponseSetting": {
+        "conditional": null,
+        "codeHook": {
+            "isActive": true,
+            "enableCodeHookInvocation": true,
+            "invocationLabel": null,
+            "postCodeHookSpecification": {
+                "failureResponse": null,
+                "failureNextStep": {
+                    "sessionAttributes": {},
+                    "dialogAction": {
+                        "type": "EndConversation",
+                        "slotToElicit": null,
+                        "suppressNextMessage": null
+                    },
+                    "intent": {
+                        "name": null,
+                        "slots": {}
+                    }
+                },
+                "failureConditional": null,
+                "successResponse": null,
+                "successNextStep": {
+                    "sessionAttributes": {},
+                    "dialogAction": {
+                        "type": "ElicitSlot",
+                        "slotToElicit": "FeelingsResponse",
+                        "suppressNextMessage": null
+                    },
+                    "intent": {
+                        "name": null,
+                        "slots": {}
+                    }
+                },
+                "successConditional": null,
+                "timeoutResponse": null,
+                "timeoutNextStep": {
+                    "sessionAttributes": {},
+                    "dialogAction": {
+                        "type": "EndConversation",
+                        "slotToElicit": null,
+                        "suppressNextMessage": null
+                    },
+                    "intent": {
+                        "name": null,
+                        "slots": {}
+                    }
+                },
+                "timeoutConditional": null
+            }
+        },
+        "nextStep": {
+            "sessionAttributes": {},
+            "dialogAction": {
+                "type": "InvokeDialogCodeHook",
+                "slotToElicit": null,
+                "suppressNextMessage": null
+            },
+            "intent": {
+                "name": null,
+                "slots": {}
+            }
+        },
+        "initialResponse": null
+    },
+    "inputContexts": null,
+    "outputContexts": null,
+    "kendraConfiguration": null,
+    "qnAIntentConfiguration": null,
+    "dialogCodeHook": {
+        "enabled": true
+    },
+    "fulfillmentCodeHook": null,
+    "slotPriorities": [
+        {
+            "priority": 1,
+            "slotName": "FeelingsResponse"
+        },
+        {
+            "priority": 2,
+            "slotName": "ActivityChoice"
+        }
+    ]
+}

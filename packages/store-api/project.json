@@ -1,0 +1,78 @@
+{
+    "name": "store-api",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "packages/store-api/src",
+    "projectType": "application",
+    "targets": {
+        "build": {
+            "executor": "@nx/webpack:webpack",
+            "outputs": ["{options.outputPath}"],
+            "defaultConfiguration": "production",
+            "options": {
+                "target": "node",
+                "compiler": "tsc",
+                "externalDependencies": "none",
+                "outputPath": "dist/packages/store-api",
+                "main": "packages/store-api/src/main.ts",
+                "tsConfig": "packages/store-api/tsconfig.app.json",
+                "isolatedConfig": true,
+                "webpackConfig": "packages/store-api/webpack.config.js"
+            },
+            "configurations": {
+                "development": {},
+                "production": {}
+            }
+        },
+        "build-local-runner": {
+            "executor": "@nx/webpack:webpack",
+            "outputs": ["{options.outputPath}"],
+            "defaultConfiguration": "development",
+            "options": {
+                "target": "node",
+                "compiler": "tsc",
+                "outputPath": "dist/packages/store-api/local-runner",
+                "main": "packages/store-api/local-runner.ts",
+                "tsConfig": "packages/store-api/tsconfig.app.json",
+                "isolatedConfig": true,
+                "webpackConfig": "packages/store-api/webpack.config.js"
+            },
+            "configurations": {
+                "development": {}
+            }
+        },
+        "serve": {
+            "executor": "@nx/js:node",
+            "defaultConfiguration": "development",
+            "options": {
+                "buildTarget": "store-api:build-local-runner"
+            },
+            "configurations": {
+                "development": {
+                    "buildTarget": "store-api:build-local-runner:development"
+                }
+            }
+        },
+        "lint": {
+            "executor": "@nx/linter:eslint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": ["packages/store-api/**/*.ts"]
+            }
+        },
+        "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+            "options": {
+                "jestConfig": "packages/store-api/jest.config.ts",
+                "passWithNoTests": true
+            },
+            "configurations": {
+                "ci": {
+                    "ci": true,
+                    "codeCoverage": true
+                }
+            }
+        }
+    },
+    "tags": []
+}

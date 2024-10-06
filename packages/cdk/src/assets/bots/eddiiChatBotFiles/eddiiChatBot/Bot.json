@@ -1,0 +1,10 @@
+{
+    "name": "eddiiChatBot",
+    "version": "DRAFT",
+    "description": "eddii Conversational Chat Bot",
+    "identifier": "",
+    "dataPrivacy": {
+        "childDirected": true
+    },
+    "idleSessionTTLInSeconds": 120
+}

@@ -1,0 +1,286 @@
+{
+    "name": "Meditation",
+    "identifier": "",
+    "description": null,
+    "parentIntentSignature": null,
+    "sampleUtterances": [
+        { "utterance": "i want to meditate" },
+        { "utterance": "let me meditate" },
+        { "utterance": "help me meditate" },
+        { "utterance": "please guide me to meditate" },
+        { "utterance": "could you assist me with meditation?" },
+        {
+            "utterance": "would you be able to guide me through a meditation session?"
+        },
+        { "utterance": "i'd like to practice meditation" },
+        { "utterance": "can you walk me through a meditation exercise?" },
+        { "utterance": "show me techniques for calming meditation" },
+        { "utterance": "what's the best way to start meditating?" },
+        { "utterance": "i need guidance on focused meditation" },
+        { "utterance": "how can i improve my meditation practice?" },
+        { "utterance": "guide me through a stress-relief meditation" },
+        { "utterance": "what are some effective meditation methods?" },
+        { "utterance": "can meditation help me sleep better?" },
+        { "utterance": "teach me deep breathing exercises for meditation" },
+        { "utterance": "introduce me to mindfulness meditation" },
+        { "utterance": "how to achieve deep relaxation through meditation?" },
+        {
+            "utterance": "is there a meditation technique for anxiety reduction?"
+        },
+        { "utterance": "what meditation practices are good for beginners?" },
+        { "utterance": "can you suggest a short meditation for busy days?" },
+        { "utterance": "how to establish a daily meditation routine?" },
+        { "utterance": "what's the importance of posture in meditation?" },
+        { "utterance": "can we do a guided visualization meditation?" },
+        {
+            "utterance": "how do i meditate to enhance focus and concentration?"
+        },
+        { "utterance": "what is the role of mindfulness in meditation?" },
+        { "utterance": "can meditation aid in emotional healing?" },
+        { "utterance": "is it possible to meditate in noisy environments?" },
+        { "utterance": "how to use meditation for personal growth?" },
+        { "utterance": "what are advanced meditation techniques?" },
+        { "utterance": "can meditation improve my creativity?" },
+        { "utterance": "how long should i meditate each day?" },
+        { "utterance": "is guided meditation more effective for beginners?" },
+        { "utterance": "how to meditate for spiritual awakening?" },
+        { "utterance": "what are the signs of progress in meditation?" },
+        { "utterance": "can you lead a group meditation session?" },
+        { "utterance": "how to deal with distractions during meditation?" },
+        { "utterance": "what is mantra meditation and how do i do it?" },
+        { "utterance": "how can meditation improve my relationships?" },
+        { "utterance": "is meditation beneficial for students?" },
+        { "utterance": "what kind of music is best for meditation?" },
+        { "utterance": "how to use meditation to reduce stress at work?" },
+        { "utterance": "can meditation help with physical pain?" },
+        { "utterance": "how to incorporate meditation into my daily life?" },
+        { "utterance": "what are the benefits of group meditation?" },
+        { "utterance": "how to practice loving-kindness meditation?" },
+        { "utterance": "what is zazen meditation?" },
+        { "utterance": "can you explain the concept of walking meditation?" },
+        { "utterance": "how does meditation affect the mind and body?" },
+        { "utterance": "what should i do if i find it hard to meditate?" },
+        { "utterance": "how to meditate for clarity and decision making?" }
+    ],
+    "intentConfirmationSetting": {
+        "isActive": true,
+        "promptSpecification": {
+            "messageGroupsList": [
+                {
+                    "message": {
+                        "ssmlMessage": null,
+                        "customPayload": null,
+                        "plainTextMessage": {
+                            "value": "Want to meditate again?"
+                        },
+                        "imageResponseCard": null
+                    },
+                    "variations": null
+                }
+            ],
+            "maxRetries": 4,
+            "allowInterrupt": true,
+            "messageSelectionStrategy": "Random",
+            "promptAttemptsSpecification": {
+                "Retry2": {
+                    "allowedInputTypes": {
+                        "allowAudioInput": true,
+                        "allowDTMFInput": true
+                    },
+                    "audioAndDTMFInputSpecification": {
+                        "dtmfSpecification": {
+                            "maxLength": 513,
+                            "deletionCharacter": "*",
+                            "endCharacter": "#",
+                            "endTimeoutMs": 5000
+                        },
+                        "startTimeoutMs": 4000,
+                        "audioSpecification": {
+                            "maxLengthMs": 15000,
+                            "endTimeoutMs": 640
+                        }
+                    },
+                    "allowInterrupt": true,
+                    "textInputSpecification": { "startTimeoutMs": 30000 }
+                },
+                "Initial": {
+                    "allowedInputTypes": {
+                        "allowAudioInput": true,
+                        "allowDTMFInput": true
+                    },
+                    "audioAndDTMFInputSpecification": {
+                        "dtmfSpecification": {
+                            "maxLength": 513,
+                            "deletionCharacter": "*",
+                            "endCharacter": "#",
+                            "endTimeoutMs": 5000
+                        },
+                        "startTimeoutMs": 4000,
+                        "audioSpecification": {
+                            "maxLengthMs": 15000,
+                            "endTimeoutMs": 640
+                        }
+                    },
+                    "allowInterrupt": true,
+                    "textInputSpecification": { "startTimeoutMs": 30000 }
+                },
+                "Retry4": {
+                    "allowedInputTypes": {
+                        "allowAudioInput": true,
+                        "allowDTMFInput": true
+                    },
+                    "audioAndDTMFInputSpecification": {
+                        "dtmfSpecification": {
+                            "maxLength": 513,
+                            "deletionCharacter": "*",
+                            "endCharacter": "#",
+                            "endTimeoutMs": 5000
+                        },
+                        "startTimeoutMs": 4000,
+                        "audioSpecification": {
+                            "maxLengthMs": 15000,
+                            "endTimeoutMs": 640
+                        }
+                    },
+                    "allowInterrupt": true,
+                    "textInputSpecification": { "startTimeoutMs": 30000 }
+                },
+                "Retry3": {
+                    "allowedInputTypes": {
+                        "allowAudioInput": true,
+                        "allowDTMFInput": true
+                    },
+                    "audioAndDTMFInputSpecification": {
+                        "dtmfSpecification": {
+                            "maxLength": 513,
+                            "deletionCharacter": "*",
+                            "endCharacter": "#",
+                            "endTimeoutMs": 5000
+                        },
+                        "startTimeoutMs": 4000,
+                        "audioSpecification": {
+                            "maxLengthMs": 15000,
+                            "endTimeoutMs": 640
+                        }
+                    },
+                    "allowInterrupt": true,
+                    "textInputSpecification": { "startTimeoutMs": 30000 }
+                },
+                "Retry1": {
+                    "allowedInputTypes": {
+                        "allowAudioInput": true,
+                        "allowDTMFInput": true
+                    },
+                    "audioAndDTMFInputSpecification": {
+                        "dtmfSpecification": {
+                            "maxLength": 513,
+                            "deletionCharacter": "*",
+                            "endCharacter": "#",
+                            "endTimeoutMs": 5000
+                        },
+                        "startTimeoutMs": 4000,
+                        "audioSpecification": {
+                            "maxLengthMs": 15000,
+                            "endTimeoutMs": 640
+                        }
+                    },
+                    "allowInterrupt": true,
+                    "textInputSpecification": { "startTimeoutMs": 30000 }
+                }
+            }
+        },
+        "declinationResponse": null,
+        "failureNextStep": {
+            "sessionAttributes": {},
+            "dialogAction": {
+                "type": "StartIntent",
+                "slotToElicit": null,
+                "suppressNextMessage": null
+            },
+            "intent": { "name": "FallbackIntent", "slots": {} }
+        },
+        "elicitationCodeHook": {
+            "enableCodeHookInvocation": true,
+            "invocationLabel": null
+        },
+        "confirmationNextStep": {
+            "sessionAttributes": {},
+            "dialogAction": {
+                "type": "StartIntent",
+                "slotToElicit": null,
+                "suppressNextMessage": null
+            },
+            "intent": { "name": null, "slots": {} }
+        },
+        "declinationNextStep": {
+            "sessionAttributes": {},
+            "dialogAction": {
+                "type": "EndConversation",
+                "slotToElicit": null,
+                "suppressNextMessage": null
+            },
+            "intent": { "name": null, "slots": {} }
+        }
+    },
+    "intentClosingSetting": null,
+    "initialResponseSetting": {
+        "conditional": null,
+        "codeHook": {
+            "isActive": true,
+            "enableCodeHookInvocation": true,
+            "invocationLabel": null,
+            "postCodeHookSpecification": {
+                "failureResponse": null,
+                "failureNextStep": {
+                    "sessionAttributes": {},
+                    "dialogAction": {
+                        "type": "EndConversation",
+                        "slotToElicit": null,
+                        "suppressNextMessage": null
+                    },
+                    "intent": { "name": null, "slots": {} }
+                },
+                "failureConditional": null,
+                "successResponse": null,
+                "successNextStep": {
+                    "sessionAttributes": {},
+                    "dialogAction": {
+                        "type": "ElicitSlot",
+                        "slotToElicit": "MeditationResponse",
+                        "suppressNextMessage": null
+                    },
+                    "intent": { "name": null, "slots": {} }
+                },
+                "successConditional": null,
+                "timeoutResponse": null,
+                "timeoutNextStep": {
+                    "sessionAttributes": {},
+                    "dialogAction": {
+                        "type": "EndConversation",
+                        "slotToElicit": null,
+                        "suppressNextMessage": null
+                    },
+                    "intent": { "name": null, "slots": {} }
+                },
+                "timeoutConditional": null
+            }
+        },
+        "nextStep": {
+            "sessionAttributes": {},
+            "dialogAction": {
+                "type": "InvokeDialogCodeHook",
+                "slotToElicit": null,
+                "suppressNextMessage": null
+            },
+            "intent": { "name": null, "slots": {} }
+        },
+        "initialResponse": null
+    },
+    "inputContexts": null,
+    "outputContexts": null,
+    "kendraConfiguration": null,
+    "qnAIntentConfiguration": null,
+    "dialogCodeHook": { "enabled": true },
+    "fulfillmentCodeHook": null,
+    "slotPriorities": [{ "priority": 1, "slotName": "MeditationResponse" }]
+}

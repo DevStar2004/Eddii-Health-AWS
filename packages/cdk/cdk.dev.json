@@ -1,0 +1,7 @@
+{
+    "app": "npx ts-node src/dev.ts",
+    "output": "../../dist/packages/cdk.out",
+    "context": {
+        "aws-cdk:enableDiffNoFail": "true"
+    }
+}

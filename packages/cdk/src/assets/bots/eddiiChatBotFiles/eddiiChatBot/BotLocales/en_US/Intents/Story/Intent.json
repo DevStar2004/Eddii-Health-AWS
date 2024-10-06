@@ -1,0 +1,276 @@
+{
+    "name": "Story",
+    "identifier": "",
+    "description": null,
+    "parentIntentSignature": null,
+    "sampleUtterances": [
+        { "utterance": "tell me a story" },
+        { "utterance": "i want to hear a story" },
+        { "utterance": "can you tell a story" },
+        { "utterance": "would you tell me story" },
+        { "utterance": "let me listen to story" },
+        { "utterance": "narrate a story for me" },
+        { "utterance": "say me story" },
+        { "utterance": "recite a story" },
+        { "utterance": "could you say a story" },
+        { "utterance": "please tell story" },
+        { "utterance": "share a story with me" },
+        { "utterance": "i'd like to hear a story" },
+        { "utterance": "spin me a tale" },
+        { "utterance": "give me a story to listen to" },
+        { "utterance": "i'm in the mood for a story" },
+        { "utterance": "read me a story" },
+        { "utterance": "i'm eager to hear a story" },
+        { "utterance": "can we listen to a story?" },
+        { "utterance": "i'd love a story right now" },
+        { "utterance": "tell a story, please" },
+        { "utterance": "have any good stories?" },
+        { "utterance": "i need a story" },
+        { "utterance": "looking for a story" },
+        { "utterance": "craving a story" },
+        { "utterance": "tell a tale" },
+        { "utterance": "i'd enjoy a story" },
+        { "utterance": "let's hear a story" },
+        { "utterance": "storytime now" },
+        { "utterance": "time for a story" },
+        { "utterance": "share another story" },
+        { "utterance": "another story, please" },
+        { "utterance": "a story would be nice" },
+        { "utterance": "got any stories?" },
+        { "utterance": "hit me with a story" },
+        { "utterance": "i'm ready for a story" },
+        { "utterance": "play a story for me" },
+        { "utterance": "tell me something interesting" },
+        { "utterance": "i'm all ears for a story" },
+        { "utterance": "whisper me a story" },
+        { "utterance": "enticing stories, please" },
+        { "utterance": "a fascinating story, perhaps?" },
+        { "utterance": "i'm looking to hear a tale" },
+        { "utterance": "do you have a story to tell?" },
+        { "utterance": "i yearn for a good story" },
+        { "utterance": "regale me with a story" },
+        { "utterance": "probe your library for a story" },
+        { "utterance": "fetch me a story" },
+        { "utterance": "delve into a story" },
+        { "utterance": "i'd like a narrative journey" }
+    ],
+    "intentConfirmationSetting": {
+        "isActive": true,
+        "promptSpecification": {
+            "messageGroupsList": [
+                {
+                    "message": {
+                        "ssmlMessage": null,
+                        "customPayload": null,
+                        "plainTextMessage": { "value": "Want another story?" },
+                        "imageResponseCard": null
+                    },
+                    "variations": null
+                }
+            ],
+            "maxRetries": 4,
+            "allowInterrupt": true,
+            "messageSelectionStrategy": "Random",
+            "promptAttemptsSpecification": {
+                "Retry2": {
+                    "allowedInputTypes": {
+                        "allowAudioInput": true,
+                        "allowDTMFInput": true
+                    },
+                    "audioAndDTMFInputSpecification": {
+                        "dtmfSpecification": {
+                            "maxLength": 513,
+                            "deletionCharacter": "*",
+                            "endCharacter": "#",
+                            "endTimeoutMs": 5000
+                        },
+                        "startTimeoutMs": 4000,
+                        "audioSpecification": {
+                            "maxLengthMs": 15000,
+                            "endTimeoutMs": 640
+                        }
+                    },
+                    "allowInterrupt": true,
+                    "textInputSpecification": { "startTimeoutMs": 30000 }
+                },
+                "Initial": {
+                    "allowedInputTypes": {
+                        "allowAudioInput": true,
+                        "allowDTMFInput": true
+                    },
+                    "audioAndDTMFInputSpecification": {
+                        "dtmfSpecification": {
+                            "maxLength": 513,
+                            "deletionCharacter": "*",
+                            "endCharacter": "#",
+                            "endTimeoutMs": 5000
+                        },
+                        "startTimeoutMs": 4000,
+                        "audioSpecification": {
+                            "maxLengthMs": 15000,
+                            "endTimeoutMs": 640
+                        }
+                    },
+                    "allowInterrupt": true,
+                    "textInputSpecification": { "startTimeoutMs": 30000 }
+                },
+                "Retry4": {
+                    "allowedInputTypes": {
+                        "allowAudioInput": true,
+                        "allowDTMFInput": true
+                    },
+                    "audioAndDTMFInputSpecification": {
+                        "dtmfSpecification": {
+                            "maxLength": 513,
+                            "deletionCharacter": "*",
+                            "endCharacter": "#",
+                            "endTimeoutMs": 5000
+                        },
+                        "startTimeoutMs": 4000,
+                        "audioSpecification": {
+                            "maxLengthMs": 15000,
+                            "endTimeoutMs": 640
+                        }
+                    },
+                    "allowInterrupt": true,
+                    "textInputSpecification": { "startTimeoutMs": 30000 }
+                },
+                "Retry3": {
+                    "allowedInputTypes": {
+                        "allowAudioInput": true,
+                        "allowDTMFInput": true
+                    },
+                    "audioAndDTMFInputSpecification": {
+                        "dtmfSpecification": {
+                            "maxLength": 513,
+                            "deletionCharacter": "*",
+                            "endCharacter": "#",
+                            "endTimeoutMs": 5000
+                        },
+                        "startTimeoutMs": 4000,
+                        "audioSpecification": {
+                            "maxLengthMs": 15000,
+                            "endTimeoutMs": 640
+                        }
+                    },
+                    "allowInterrupt": true,
+                    "textInputSpecification": { "startTimeoutMs": 30000 }
+                },
+                "Retry1": {
+                    "allowedInputTypes": {
+                        "allowAudioInput": true,
+                        "allowDTMFInput": true
+                    },
+                    "audioAndDTMFInputSpecification": {
+                        "dtmfSpecification": {
+                            "maxLength": 513,
+                            "deletionCharacter": "*",
+                            "endCharacter": "#",
+                            "endTimeoutMs": 5000
+                        },
+                        "startTimeoutMs": 4000,
+                        "audioSpecification": {
+                            "maxLengthMs": 15000,
+                            "endTimeoutMs": 640
+                        }
+                    },
+                    "allowInterrupt": true,
+                    "textInputSpecification": { "startTimeoutMs": 30000 }
+                }
+            }
+        },
+        "declinationResponse": null,
+        "failureNextStep": {
+            "sessionAttributes": {},
+            "dialogAction": {
+                "type": "StartIntent",
+                "slotToElicit": null,
+                "suppressNextMessage": null
+            },
+            "intent": { "name": "FallbackIntent", "slots": {} }
+        },
+        "elicitationCodeHook": {
+            "enableCodeHookInvocation": true,
+            "invocationLabel": null
+        },
+        "confirmationNextStep": {
+            "sessionAttributes": {},
+            "dialogAction": {
+                "type": "StartIntent",
+                "slotToElicit": null,
+                "suppressNextMessage": null
+            },
+            "intent": { "name": null, "slots": {} }
+        },
+        "declinationNextStep": {
+            "sessionAttributes": {},
+            "dialogAction": {
+                "type": "EndConversation",
+                "slotToElicit": null,
+                "suppressNextMessage": null
+            },
+            "intent": { "name": null, "slots": {} }
+        }
+    },
+    "intentClosingSetting": null,
+    "initialResponseSetting": {
+        "conditional": null,
+        "codeHook": {
+            "isActive": true,
+            "enableCodeHookInvocation": true,
+            "invocationLabel": null,
+            "postCodeHookSpecification": {
+                "failureResponse": null,
+                "failureNextStep": {
+                    "sessionAttributes": {},
+                    "dialogAction": {
+                        "type": "EndConversation",
+                        "slotToElicit": null,
+                        "suppressNextMessage": null
+                    },
+                    "intent": { "name": null, "slots": {} }
+                },
+                "failureConditional": null,
+                "successResponse": null,
+                "successNextStep": {
+                    "sessionAttributes": {},
+                    "dialogAction": {
+                        "type": "ElicitSlot",
+                        "slotToElicit": "StoryResponse",
+                        "suppressNextMessage": null
+                    },
+                    "intent": { "name": null, "slots": {} }
+                },
+                "successConditional": null,
+                "timeoutResponse": null,
+                "timeoutNextStep": {
+                    "sessionAttributes": {},
+                    "dialogAction": {
+                        "type": "EndConversation",
+                        "slotToElicit": null,
+                        "suppressNextMessage": null
+                    },
+                    "intent": { "name": null, "slots": {} }
+                },
+                "timeoutConditional": null
+            }
+        },
+        "nextStep": {
+            "sessionAttributes": {},
+            "dialogAction": {
+                "type": "InvokeDialogCodeHook",
+                "slotToElicit": null,
+                "suppressNextMessage": null
+            },
+            "intent": { "name": null, "slots": {} }
+        },
+        "initialResponse": null
+    },
+    "inputContexts": null,
+    "outputContexts": null,
+    "kendraConfiguration": null,
+    "qnAIntentConfiguration": null,
+    "dialogCodeHook": { "enabled": true },
+    "fulfillmentCodeHook": null,
+    "slotPriorities": [{ "priority": 1, "slotName": "StoryResponse" }]
+}

@@ -1,0 +1,78 @@
+{
+    "name": "chat-bot",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "packages/chat-bot/src",
+    "projectType": "application",
+    "targets": {
+        "build": {
+            "executor": "@nx/webpack:webpack",
+            "outputs": ["{options.outputPath}"],
+            "defaultConfiguration": "production",
+            "options": {
+                "target": "node",
+                "compiler": "tsc",
+                "externalDependencies": "none",
+                "outputPath": "dist/packages/chat-bot",
+                "main": "packages/chat-bot/src/main.ts",
+                "tsConfig": "packages/chat-bot/tsconfig.app.json",
+                "isolatedConfig": true,
+                "webpackConfig": "packages/chat-bot/webpack.config.js"
+            },
+            "configurations": {
+                "development": {},
+                "production": {}
+            }
+        },
+        "build-local-runner": {
+            "executor": "@nx/webpack:webpack",
+            "outputs": ["{options.outputPath}"],
+            "defaultConfiguration": "development",
+            "options": {
+                "target": "node",
+                "compiler": "tsc",
+                "outputPath": "dist/packages/chat-bot/local-runner",
+                "main": "packages/chat-bot/local-runner.ts",
+                "tsConfig": "packages/chat-bot/tsconfig.app.json",
+                "isolatedConfig": true,
+                "webpackConfig": "packages/chat-bot/webpack.config.js"
+            },
+            "configurations": {
+                "development": {}
+            }
+        },
+        "serve": {
+            "executor": "@nx/js:node",
+            "defaultConfiguration": "development",
+            "options": {
+                "buildTarget": "chat-bot:build-local-runner"
+            },
+            "configurations": {
+                "development": {
+                    "buildTarget": "chat-bot:build-local-runner:development"
+                }
+            }
+        },
+        "lint": {
+            "executor": "@nx/linter:eslint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": ["packages/chat-bot/**/*.ts"]
+            }
+        },
+        "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+            "options": {
+                "jestConfig": "packages/chat-bot/jest.config.ts",
+                "passWithNoTests": true
+            },
+            "configurations": {
+                "ci": {
+                    "ci": true,
+                    "codeCoverage": true
+                }
+            }
+        }
+    },
+    "tags": []
+}

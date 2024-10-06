@@ -1,0 +1,109 @@
+diff --git a/lib/google.js b/lib/google.js
+index 679b37f6add5275daf2c8b7b29e8cc74fbd56db1..5a49c2e3c65362ee8da28f1a669116615180fa20 100644
+--- a/lib/google.js
++++ b/lib/google.js
+@@ -562,45 +562,31 @@ module.exports.getPurchaseData = function (purchase, options) {
+     if (!purchase) {
+         return null;
+     }
+-    if (options && options.ignoreExpired) {
+-        var now = Date.now();
+-        if (purchase.expiryTimeMillis <= now) {
+-            return [];
+-        } else if (purchase.expirationTime <= now) {
+-            return [];
+-        } else if (
+-            purchase.cancelReason &&
+-            purchase.cancelReason !== CANCELLATION_REASON.USER_CANCELLED
+-        ) {
+-            // User cancellations do not not void the subscription.
+-            return [];
+-        }
+-    }
+     var data = [];
+     var purchaseInfo = responseData.parse(purchase);
+     purchaseInfo.transactionId = purchase.purchaseToken;
+-    purchaseInfo.purchaseDate = purchase.purchaseTime;
++    purchaseInfo.purchaseDate = new Date(purchase.startTime).getTime();
+     purchaseInfo.quantity = 1;
+ 
+-    if (checkSubscriptionState) {
+-        purchaseInfo.expirationDate = purchase.expirationTime;
++    if (checkSubscriptionState && purchase.expirationTime) {
++        purchaseInfo.expirationDate = new Date(purchase.expirationTime).getTime();
+     }
+ 
+-    if (purchase.expiryTimeMillis) {
+-        purchaseInfo.expirationDate = purchase.expiryTimeMillis;
++    if (purchase.lineItems?.length > 0 && purchase.lineItems[0].expiryTime) {
++        purchaseInfo.expirationDate = new Date(purchase.lineItems[0].expiryTime).getTime();
+     }
+ 
+     // User cancellations do not not void the subscription.
+     // See `userCancellationTimeMillis` at
+     // https://developers.google.com/android-publisher/api-ref/purchases/subscriptions
+     if (
+-        purchase.cancelReason &&
+-        purchase.cancelReason !== CANCELLATION_REASON.USER_CANCELLED
++        purchase.canceledStateContext &&
++        !Object.keys(purchase.canceledStateContext).includes("userInitiatedCancellation")
+     ) {
+         // Artificially promoting the expiryTimeMillis to the cancellation date for
+         // use by the isExpired utility function. Google does not provide a cancellation
+         // date for non-user cancelled reasons.
+-        purchaseInfo.cancellationDate = purchase.expiryTimeMillis;
++        purchaseInfo.cancellationDate = purchaseInfo.expirationDate;
+     }
+ 
+     data.push(purchaseInfo);
+diff --git a/lib/googleAPI.js b/lib/googleAPI.js
+index a6ef57a2cf56ba2cb2ddd4999053b6e3533f08b6..168f2ef384d4759cb6bf52160b12f9fc6a54baed 100644
+--- a/lib/googleAPI.js
++++ b/lib/googleAPI.js
+@@ -15,7 +15,8 @@ var NAME = 'GOOGLE API';
+ var GET_TOKEN = 'https://accounts.google.com/o/oauth2/token';
+ var SCOPE = 'https://www.googleapis.com/auth/androidpublisher';
+ var PRODUCT_VAL = 'https://www.googleapis.com/androidpublisher/v3/applications/%s/purchases/products/%s/tokens/%s?access_token=%s';
+-var SUBSCR_VAL = 'https://www.googleapis.com/androidpublisher/v3/applications/%s/purchases/subscriptions/%s/tokens/%s?access_token=%s';
++var SUBSCR_VAL = 'https://www.googleapis.com/androidpublisher/v3/applications/%s/purchases/subscriptionsv2/tokens/%s?access_token=%s';
++
+ 
+ // This comes from Google Developer account
+ var conf = {
+@@ -167,21 +168,29 @@ function _getToken(clientEmail, privateKey, cb) {
+ // receipt: { purchaseToken, subscription }
+ function _getValidationUrl(receipt, token) {
+     var url = '';
++    var urlFormat = ''
+     switch (receipt.subscription) {
+         case true:
+             url = SUBSCR_VAL;
++            urlFormat = util.format(
++		        url,
++		        encodeURIComponent(receipt.packageName),
++		        encodeURIComponent(receipt.purchaseToken),
++		        encodeURIComponent(token)
++		    );
+         break;
+         case false:
+         default:
+             url = PRODUCT_VAL;
++            urlFormat = util.format(
++		        url,
++		        encodeURIComponent(receipt.packageName),
++		        encodeURIComponent(receipt.productId),
++		        encodeURIComponent(receipt.purchaseToken),
++		        encodeURIComponent(token)
++		    );
+         break;
+     }
+-    return util.format(
+-        url,
+-        encodeURIComponent(receipt.packageName),
+-        encodeURIComponent(receipt.productId),
+-        encodeURIComponent(receipt.purchaseToken),
+-        encodeURIComponent(token)
+-    );
++    return urlFormat;
+ }
+ 

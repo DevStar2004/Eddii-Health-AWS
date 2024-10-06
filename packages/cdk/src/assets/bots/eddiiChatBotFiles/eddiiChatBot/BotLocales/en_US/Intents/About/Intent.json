@@ -1,0 +1,136 @@
+{
+    "name": "About",
+    "identifier": "",
+    "description": "Describe that you are a in-app virtual character named eddii.  You are a leaf and you help people living with chronic medical conditions.",
+    "parentIntentSignature": null,
+    "sampleUtterances": [
+        { "utterance": "what can you do" },
+        { "utterance": "i would like to know more about you" },
+        { "utterance": "please introduce yourself" },
+        { "utterance": "tell me about yourself" },
+        { "utterance": "can you introduce yourself" },
+        { "utterance": "what are you" },
+        { "utterance": "who are you" },
+        { "utterance": "i want to know more about you" },
+        { "utterance": "how do you assist users?" },
+        { "utterance": "what features do you offer?" },
+        { "utterance": "can you describe your functionalities?" },
+        { "utterance": "what tasks are you capable of performing?" },
+        { "utterance": "how can you improve my daily life?" },
+        { "utterance": "what's unique about your programming?" },
+        { "utterance": "how do you differ from other ai assistants?" },
+        { "utterance": "describe your capabilities" },
+        { "utterance": "which services can you provide?" },
+        { "utterance": "how do you support daily tasks?" },
+        { "utterance": "what kind of help can you offer?" },
+        { "utterance": "how could you assist me in my daily routine?" },
+        { "utterance": "what advanced features do you possess?" },
+        { "utterance": "how can you make things easier for me?" },
+        { "utterance": "reveal your most useful functions" },
+        { "utterance": "demonstrate how you can aid in task management" },
+        { "utterance": "explain how you're advancing ai" },
+        { "utterance": "what ai technologies do you embody?" },
+        { "utterance": "how do you use machine learning to assist users?" },
+        { "utterance": "what is your understanding of generative ai?" },
+        { "utterance": "illustrate how you apply ai in daily scenarios" },
+        { "utterance": "how do you utilize deep learning?" },
+        { "utterance": "share how ai influences your functions" },
+        { "utterance": "can you explain your ai-driven features?" },
+        { "utterance": "how does ai shape your interactions with users?" },
+        { "utterance": "in what ways do you learn and evolve?" },
+        { "utterance": "how do you process user requests?" },
+        { "utterance": "can you provide an insight into your ai framework?" },
+        { "utterance": "how are you enhancing user experience with ai?" },
+        { "utterance": "what ai milestones have you achieved?" },
+        { "utterance": "how do you interpret and act on voice commands?" },
+        { "utterance": "describe your development in ai" },
+        { "utterance": "how do you ensure user privacy with ai?" },
+        { "utterance": "what are your core ai capabilities?" },
+        { "utterance": "explain your role as an ai assistant" },
+        {
+            "utterance": "how do you differentiate yourself in the field of ai?"
+        },
+        { "utterance": "share examples of your ai in action" },
+        { "utterance": "reveal the ai technologies you're built on" },
+        { "utterance": "what aspects of ai are you hoping to improve?" },
+        { "utterance": "how does ai help you understand user needs?" },
+        { "utterance": "what are the newest ai features you have?" }
+    ],
+    "intentConfirmationSetting": null,
+    "intentClosingSetting": null,
+    "initialResponseSetting": {
+        "conditional": null,
+        "codeHook": {
+            "isActive": false,
+            "enableCodeHookInvocation": true,
+            "invocationLabel": null,
+            "postCodeHookSpecification": {
+                "failureResponse": null,
+                "failureNextStep": {
+                    "sessionAttributes": null,
+                    "intent": { "name": null, "slots": null },
+                    "dialogAction": {
+                        "type": "EndConversation",
+                        "slotToElicit": null,
+                        "suppressNextMessage": null
+                    }
+                },
+                "failureConditional": null,
+                "successResponse": null,
+                "successNextStep": {
+                    "sessionAttributes": null,
+                    "intent": { "name": null, "slots": null },
+                    "dialogAction": {
+                        "type": "EndConversation",
+                        "slotToElicit": null,
+                        "suppressNextMessage": null
+                    }
+                },
+                "successConditional": null,
+                "timeoutResponse": null,
+                "timeoutNextStep": {
+                    "sessionAttributes": null,
+                    "intent": { "name": null, "slots": null },
+                    "dialogAction": {
+                        "type": "EndConversation",
+                        "slotToElicit": null,
+                        "suppressNextMessage": null
+                    }
+                },
+                "timeoutConditional": null
+            }
+        },
+        "nextStep": {
+            "sessionAttributes": null,
+            "intent": { "name": null, "slots": null },
+            "dialogAction": {
+                "type": "EndConversation",
+                "slotToElicit": null,
+                "suppressNextMessage": null
+            }
+        },
+        "initialResponse": {
+            "messageGroupsList": [
+                {
+                    "message": {
+                        "ssmlMessage": null,
+                        "customPayload": null,
+                        "plainTextMessage": {
+                            "value": "I'm eddii 🍃, your personal health buddy designed to make managing your diabetes a whole lot more fun and engaging. I will always be there to motivate and support you through every high and low on your journey toward better health."
+                        },
+                        "imageResponseCard": null
+                    },
+                    "variations": null
+                }
+            ],
+            "allowInterrupt": true
+        }
+    },
+    "inputContexts": null,
+    "outputContexts": null,
+    "kendraConfiguration": null,
+    "qnAIntentConfiguration": null,
+    "dialogCodeHook": null,
+    "fulfillmentCodeHook": null,
+    "slotPriorities": []
+}

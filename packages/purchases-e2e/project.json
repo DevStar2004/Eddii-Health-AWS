@@ -1,0 +1,32 @@
+{
+    "name": "purchases-e2e",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "implicitDependencies": ["purchases"],
+    "targets": {
+        "build": {
+            "executor": "@nx/js:tsc",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "outputPath": "dist/packages/purchases-e2e",
+                "main": "packages/purchases-e2e/src/purchases/purchases.spec.ts",
+                "tsConfig": "packages/purchases-e2e/tsconfig.spec.json",
+                "assets": ["packages/purchases-e2e/*.md"]
+            }
+        },
+        "e2e": {
+            "executor": "@nx/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/{e2eProjectRoot}"],
+            "options": {
+                "jestConfig": "packages/purchases-e2e/jest.config.ts",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nx/linter:eslint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": ["packages/purchases-e2e/**/*.{js,ts}"]
+            }
+        }
+    }
+}

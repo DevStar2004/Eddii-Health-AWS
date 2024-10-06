@@ -1,0 +1,8 @@
+{
+    "name": "English (US)",
+    "identifier": "en_US",
+    "version": null,
+    "description": null,
+    "voiceSettings": { "voiceId": "Matthew", "engine": "neural" },
+    "nluConfidenceThreshold": 0.4
+}

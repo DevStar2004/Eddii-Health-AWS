@@ -1,0 +1,32 @@
+{
+    "name": "branch-api-e2e",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "implicitDependencies": ["branch-api"],
+    "targets": {
+        "build": {
+            "executor": "@nx/js:tsc",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "outputPath": "dist/packages/branch-api-e2e",
+                "main": "packages/branch-api-e2e/src/subscription-api/subscription-api.spec.ts",
+                "tsConfig": "packages/branch-api-e2e/tsconfig.spec.json",
+                "assets": ["packages/branch-api-e2e/*.md"]
+            }
+        },
+        "e2e": {
+            "executor": "@nx/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/{e2eProjectRoot}"],
+            "options": {
+                "jestConfig": "packages/branch-api-e2e/jest.config.ts",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nx/linter:eslint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": ["packages/branch-api-e2e/**/*.{js,ts}"]
+            }
+        }
+    }
+}

@@ -1,0 +1,37 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "rootDir": ".",
+        "sourceMap": true,
+        "declaration": false,
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "importHelpers": true,
+        "target": "es2015",
+        "module": "esnext",
+        "lib": ["es2020", "dom"],
+        "skipLibCheck": true,
+        "skipDefaultLibCheck": true,
+        "esModuleInterop": true,
+        "baseUrl": ".",
+        "paths": {
+            "@eddii-backend/auth-flow": ["packages/auth-flow/src/main.ts"],
+            "@eddii-backend/clients": ["packages/clients/src/index.ts"],
+            "@eddii-backend/dal": ["packages/dal/src/index.ts"],
+            "@eddii-backend/dexcom": ["packages/dexcom/src/index.ts"],
+            "@eddii-backend/email": ["packages/email/src/index.ts"],
+            "@eddii-backend/flags": ["packages/flags/src/index.ts"],
+            "@eddii-backend/notifications": [
+                "packages/notifications/src/index.ts"
+            ],
+            "@eddii-backend/purchases": ["packages/purchases/src/index.ts"],
+            "@eddii-backend/secrets": ["packages/secrets/src/index.ts"],
+            "@eddii-backend/types": ["packages/types/src/index.ts"],
+            "@eddii-backend/utils": ["packages/utils/src/index.ts"],
+            "@eddii-backend/translate": ["packages/translate/src/index.ts"],
+            "@eddii-backend/healthie": ["packages/healthie/src/index.ts"]
+        }
+    },
+    "exclude": ["node_modules", "tmp"]
+}

@@ -1,0 +1,120 @@
+{
+    "name": "Greeting",
+    "identifier": "",
+    "description": "Greeting or introductions to start the conversation,",
+    "parentIntentSignature": null,
+    "sampleUtterances": [
+        { "utterance": "greetings, pleased to meet you" },
+        { "utterance": "nice to see you here" },
+        { "utterance": "it's a delight to meet you" },
+        { "utterance": "good morning, nice to see you" },
+        { "utterance": "good day to you" },
+        { "utterance": "greetings, nice to see you" },
+        { "utterance": "hello there, pleasure to meet you" },
+        { "utterance": "good to see you, how are you?" },
+        { "utterance": "nice running into you today" },
+        { "utterance": "hello" },
+        { "utterance": "good morning" },
+        { "utterance": "hi there" },
+        { "utterance": "greetings" },
+        { "utterance": "nice to meet you" },
+        { "utterance": "how are you doing?" },
+        { "utterance": "it's a pleasure to meet you" },
+        { "utterance": "good day" },
+        { "utterance": "good to see you" },
+        { "utterance": "nice running into you" },
+        { "utterance": "hey" },
+        { "utterance": "yo" },
+        { "utterance": "pleasure bumping into you" },
+        { "utterance": "how's it going?" },
+        { "utterance": "lovely to meet you" },
+        { "utterance": "how do you do?" },
+        { "utterance": "hey there, how's everything?" },
+        { "utterance": "wonderful to see you" },
+        { "utterance": "how's everything going?" },
+        { "utterance": "good evening" },
+        { "utterance": "what's up?" },
+        { "utterance": "great to see you" },
+        { "utterance": "happy to meet you" },
+        { "utterance": "hello, what a surprise!" },
+        { "utterance": "what a pleasure to see you" },
+        { "utterance": "hey, how have you been?" },
+        { "utterance": "nice bumping into you here" },
+        { "utterance": "how's your day going?" },
+        { "utterance": "it's so nice to see you" },
+        { "utterance": "what's new with you?" },
+        { "utterance": "long time no see" },
+        { "utterance": "how's life?" },
+        { "utterance": "hello again" },
+        { "utterance": "welcome" },
+        { "utterance": "so happy to see you" },
+        { "utterance": "glad to run into you" },
+        { "utterance": "hey, what's going on?" },
+        { "utterance": "how have things been?" },
+        { "utterance": "it's been too long" },
+        { "utterance": "hello, good to have you here" },
+        { "utterance": "salutations" }
+    ],
+    "intentConfirmationSetting": null,
+    "intentClosingSetting": null,
+    "initialResponseSetting": {
+        "conditional": null,
+        "codeHook": {
+            "isActive": true,
+            "enableCodeHookInvocation": true,
+            "invocationLabel": null,
+            "postCodeHookSpecification": {
+                "failureResponse": null,
+                "failureNextStep": {
+                    "sessionAttributes": null,
+                    "dialogAction": {
+                        "type": "EndConversation",
+                        "slotToElicit": null,
+                        "suppressNextMessage": null
+                    },
+                    "intent": { "name": null, "slots": null }
+                },
+                "failureConditional": null,
+                "successResponse": null,
+                "successNextStep": {
+                    "sessionAttributes": null,
+                    "dialogAction": {
+                        "type": "EndConversation",
+                        "slotToElicit": null,
+                        "suppressNextMessage": null
+                    },
+                    "intent": { "name": null, "slots": null }
+                },
+                "successConditional": null,
+                "timeoutResponse": null,
+                "timeoutNextStep": {
+                    "sessionAttributes": null,
+                    "dialogAction": {
+                        "type": "EndConversation",
+                        "slotToElicit": null,
+                        "suppressNextMessage": null
+                    },
+                    "intent": { "name": null, "slots": null }
+                },
+                "timeoutConditional": null
+            }
+        },
+        "nextStep": {
+            "sessionAttributes": null,
+            "dialogAction": {
+                "type": "InvokeDialogCodeHook",
+                "slotToElicit": null,
+                "suppressNextMessage": null
+            },
+            "intent": { "name": null, "slots": null }
+        },
+        "initialResponse": null
+    },
+    "inputContexts": null,
+    "outputContexts": null,
+    "kendraConfiguration": null,
+    "qnAIntentConfiguration": null,
+    "dialogCodeHook": { "enabled": true },
+    "fulfillmentCodeHook": null,
+    "slotPriorities": []
+}
