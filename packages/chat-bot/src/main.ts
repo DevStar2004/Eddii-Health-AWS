@@ -7,6 +7,7 @@ import { getMeditation, getSpecificMeditation } from './lib/meditation';
 import { getData, getCBTLength } from './lib/cbt';
 import { getFallback } from './lib/fallback';
 import { getFeelingsResponse } from './lib/feelings';
+import e from 'express';
 
 const feelingOptions = [
     { text: '😊', value: 'Happy' },
@@ -513,12 +514,15 @@ export const handler = async (event: LexV2Event): Promise<LexV2Result> => {
     } else if (sessionStateIntentName === 'CBT') {
         const confirmationState = event.sessionState.intent.confirmationState || 'None';
         const activityChoice: string = event.sessionState.intent.slots?.ActivityChoice?.value?.originalValue || '';
+        let cbtIndex, cbtExampleIndex, cbtPartIndex;
+        let node = getData(cbtIndex);
+        let options = JSON.parse(sessionAttributes['OPTIONS'] || '{}');
+        cbtIndex = options[activityChoice] || 0;
+        const cbtLength = getCBTLength();
 
-        let cbtPartIndex: number = parseInt(sessionAttributes['CBT_PART_INDEX']) || 0;
-        let prevCbtIndex: number = parseInt(sessionAttributes['PREV_CBT_INDEX']) || -1;
-        let cbtIndex: number = parseInt(activityChoice.substring(activityChoice.lastIndexOf('_') + 1)) || 0;
+        const messages: LexV2Message[] = [];
 
-        if (confirmationState === 'Denied' || cbtIndex === -1) {
+        if (confirmationState === 'Denied') {
             return {
                 sessionState: {
                     sessionAttributes: {
@@ -544,59 +548,93 @@ export const handler = async (event: LexV2Event): Promise<LexV2Result> => {
             };
         }
 
-        if (prevCbtIndex === 26) cbtIndex = 27;
-        let data = getData(cbtIndex);
-        const cbtLength = getCBTLength();
-        const messages: LexV2Message[] = [];
-
-        if (cbtIndex === prevCbtIndex) { // the case for Loop
-            cbtPartIndex += 1;
-            messages.push({
-                contentType: 'PlainText',
-                content: data.contents[cbtPartIndex],
-            });
-            if (data.options.length > 0)
+        if (cbtIndex == 2) {
+            if (cbtExampleIndex === -1 && cbtPartIndex === -1) { // start this flow
+                cbtExampleIndex = 0; cbtPartIndex = 0;
                 messages.push({
-                    contentType: 'ImageResponseCard',
-                    imageResponseCard: {
-                        title: 'Select an option',
-                        buttons: cbtPartIndex < (data.contents.length - 1) ? data.options
-                            : data.options.filter(option => option.text !== 'Give another example')
-                    }
+                    contentType: 'PlainText',
+                    content: node.content,
                 });
-            if (cbtPartIndex >= (data.contents.length - 1)) { // No more example data
-                cbtPartIndex = -1; // init CBT part index
+                if (node.options.length > 0) {
+                    messages.push({
+                        contentType: 'ImageResponseCard',
+                        imageResponseCard: {
+                            title: 'Select an option',
+                            buttons: node.options.map(option => ({
+                                text: option.text,
+                                value: option.text.toLowerCase().replace(/\s+/g, '_')
+                            }))
+                        }
+                    });
+                }
+                options = node.options.reduce((acc, option) => {
+                    let key = option.text.toLowerCase().replace(/\s+/g, '_');
+                    acc[key] = option.value;
+                    return acc;
+                }, {});
+            }
+            else {
+                let exampleNode = node.examples[cbtExampleIndex][cbtPartIndex];
+                messages.push({
+                    contentType: 'PlainText',
+                    content: exampleNode.content,
+                });
+                if (exampleNode.options.length > 0) {
+                    messages.push({
+                        contentType: 'ImageResponseCard',
+                        imageResponseCard: {
+                            title: 'Select an option',
+                            buttons: ((cbtExampleIndex === (node.examples.length - 1) &&
+                                cbtPartIndex === (node.examples[cbtExampleIndex].length - 1)) ?
+                                exampleNode.options.filter(option => option.text !== 'Give another example') : exampleNode.options).map(option => ({
+                                    text: option.text,
+                                    value: option.text.toLowerCase().replace(/\s+/g, '_')
+                                }))
+                        }
+                    });
+                    options = exampleNode.options.reduce((acc, option) => {
+                        let key = option.text.toLowerCase().replace(/\s+/g, '_');
+                        acc[key] = option.value;
+                        return acc;
+                    }, {});
+                }
+                cbtPartIndex += 1;
+                if (cbtPartIndex >= node.examples[cbtExampleIndex].length) {
+                    cbtExampleIndex += 1; cbtPartIndex = 0;
+                    if (cbtExampleIndex >= node.examples.length) {
+                        cbtExampleIndex = -1;
+                        cbtPartIndex = -1;
+                    }
+                }
             }
         }
         else {
-            cbtPartIndex = 0;
-            if (cbtIndex === 1 || cbtIndex === 11 || cbtIndex === 14 || cbtIndex === 17 || cbtIndex === 20 || cbtIndex === 24) {
-                messages.push({
-                    contentType: 'PlainText',
-                    content: data.contents[cbtPartIndex],
-                })
-
-                cbtIndex += 1;
-                data = getData(cbtIndex);
-            }
-
             messages.push({
                 contentType: 'PlainText',
-                content: data.contents[cbtPartIndex]
+                content: node.content,
             });
-            if (data.options.length > 0)
+            if (node.options.length > 0) {
                 messages.push({
                     contentType: 'ImageResponseCard',
                     imageResponseCard: {
                         title: 'Select an option',
-                        buttons: data.options
+                        buttons: node.options.map(option => ({
+                            text: option.text,
+                            value: option.text.toLowerCase().replace(/\s+/g, '_')
+                        }))
                     }
                 });
+                options = node.options.reduce((acc, option) => {
+                    let key = option.text.toLowerCase().replace(/\s+/g, '_');
+                    acc[key] = option.value;
+                    return acc;
+                }, {});
+            }
         }
-        prevCbtIndex = cbtIndex;
-        sessionAttributes['PREV_CBT_INDEX'] = prevCbtIndex >= 0 ? prevCbtIndex.toString() : undefined
-        sessionAttributes['CBT_PART_INDEX'] = cbtPartIndex > 0 ? cbtPartIndex.toString() : undefined;
 
+        sessionAttributes['OPTIONS'] = JSON.stringify(options);
+        sessionAttributes['CBT_EXAMPLE_INDEX'] = cbtExampleIndex !== -1 ? cbtExampleIndex.toString() : undefined;
+        sessionAttributes['CBT_PART_INDEX'] = cbtPartIndex !== -1 ? cbtPartIndex.toString() : undefined;
         return {
             sessionState: {
                 sessionAttributes: sessionAttributes,
