@@ -102,234 +102,312 @@ export const CBT = [
     },
     {
         id: 3,
-        content: 'Sometimes we fall into a pattern of negative thinking. But a LOT of negative thoughts are actually "Thinking mistakes" or "traps"', \
+        content: 'Sometimes we fall into a pattern of negative thinking. But a LOT of negative thoughts are actually "Thinking mistakes" or "traps"',
         options: [
-            { text: 'Right', value: -100 },
-            { text: 'Give another example', value: 2 }
+            { text: 'Right', value: 4 },
+            { text: 'Give another example-*', value: 2 }
         ]
     },
-    // {
-    //     id: 8,
-    //     contents: [
-    //         "What would you like to select?"],
-    //     options: [
-    //         { text: 'All or nothing thinking', value: 'All_or_nothing_thinking_9' },
-    //         { text: 'Catastrophizing', value: 'Catastrophizing_13' },
-    //         { text: 'Mind Reading', value: 'Mind_Reading_16' },
-    //         { text: 'Overresponsibility', value: 'Overresponsibility_19' },
-    //         { text: 'Intolerance of uncertainty', value: 'Intolerance_of_uncertainty_22' }
-    //     ]
-    // },
-    // {
-    //     id: 9,
-    //     contents: [
-    //         "All or nothing is a thinking trap that involves thinking in extremes, as if there are only two options when things so wrong"],
-    //     options: [
-    //         { text: 'Ok', value: 'Ok_10' },
-    //         { text: 'Go on', value: 'Go_on_10' }
-    //     ]
-    // },
-    // {
-    //     id: 10,
-    //     contents: [
-    //         "All or nothing thinking also relates to perfectionism. For example expecting your blood sugars to always be in range."],
-    //     options: [
-    //         { text: 'Do tell eddii', value: 'Do_tell_eddii_11' },
-    //     ]
-    // },
-    // {
-    //     id: 11,
-    //     contents: [
-    //         "Let me give you an example"],
-    //     options: []
-    // },
-    // {
-    //     id: 12,
-    //     contents: [
-    //         '"I never count carbs correctly and I am always running high"',
-    //         '"I am never going to have a normal life! I will always have shortcomings because of my T1D."',
-    //         'I can never seem to keep my blood sugar in target range. I always overtreat my lows'],
-    //     options: [
-    //         { text: 'Give another example', value: 'Give_another_example_12' },
-    //         { text: 'Move to next thinking trap', value: 'Move_to_next_thinking_trap_13' }
-    //     ]
-    // },
-    // {
-    //     id: 13,
-    //     contents: [
-    //         'One thinking trap is Catastrophizing. Catasrtophizing is expecting the worst',
-    //     ],
-    //     options: [
-    //         { text: 'Ok', value: 'Ok_14' },
-    //         { text: 'Go on', value: 'Go_on_14' }
-    //     ]
-    // },
-    // {
-    //     id: 14,
-    //     contents: [
-    //         'Let me give you an example',
-    //     ],
-    //     options: []
-    // },
-    // {
-    //     id: 15,
-    //     contents: [
-    //         'My blood sugar is high again. There is no way I am going to avoid complications long-term',
-    //         'With all these devices attached to me and my highs and lows, no one is ever going to want to date me',
-    //         'If my blood sugar goes low I will probably pass out and embarrass myself'
-    //     ],
-    //     options: [
-    //         { text: 'Give another example', value: 'Give_another_example_15' },
-    //         { text: 'Move to next thinking trap', value: 'Move_to_next_thinking_trap_16' }
-    //     ]
-    // },
-    // {
-    //     id: 16,
-    //     contents: [
-    //         `Mind reading assumes we know what other people are thinking and assuming it's probably negative and about us`,
-    //     ],
-    //     options: [
-    //         { text: 'Ok', value: 'Ok_17' },
-    //         { text: 'Go on', value: 'Go_on_17' }
-    //     ]
-    // },
-    // {
-    //     id: 17,
-    //     contents: [
-    //         'Let me give you an example',
-    //     ],
-    //     options: []
-    // },
-    // {
-    //     id: 18,
-    //     contents: [
-    //         'The doctor is going to see my numbers and think that I am bad at diabetes',
-    //         `As soon as someone hears I have disabetes they will think I'm sick and won't want to be friends with me`,
-    //         'My colleges view me as a disabled person and unable to perform my job because I live with T1D',
-    //         `The doctor is going to see my numbers and think I don't care.`
-    //     ],
-    //     options: [
-    //         { text: 'Give another example', value: 'Give_another_example_18' },
-    //         { text: 'Move to next thinking trap', value: 'Move_to_next_thinking_trap_19' }
-    //     ]
-    // },
-    // {
-    //     id: 19,
-    //     contents: [
-    //         `Overresponsibility ignores other aspects of a situation or the possiblity that other people might be responsible to help us 
-    //         - like our healthcare providers, support system, and eddii`,
-    //     ],
-    //     options: [
-    //         { text: 'Ok', value: 'Ok_20' },
-    //         { text: 'Go on', value: 'Go_on_20' }
-    //     ]
-    // },
-    // {
-    //     id: 20,
-    //     contents: [
-    //         `When trying to detect this thinking trap, lookout for words like "should, never, always, and have to"
-    //         \nLet me give you an example`
-    //     ],
-    //     options: []
-    // },
-    // {
-    //     id: 21,
-    //     contents: [
-    //         `I should always be able to figure out how to exercise without going low every time`,
-    //         `I should know how to keep my BG in range of most of the time after all these years living with diabetes`,
-    //         `I am still getting carb counting wrong and getting spikes. No one to blame but myself`
-    //     ],
-    //     options: [
-    //         { text: 'Give another example', value: 'Give_another_example_21' },
-    //         { text: 'Move to next thinking step', value: 'Move_to_next_thinking_step_22' }
-    //     ]
-    // },
-    // {
-    //     id: 22,
-    //     contents: [
-    //         `Not knowing and not feeling in control makes us anxious. One way we try to get back a sense of control is by expecting the worst or
-    //         catastrophizing. The problem is that then we act accordingly (e.g. treating a low before it even )`,
-    //     ],
-    //     options: [
-    //         { text: 'Ok', value: 'Ok_23' },
-    //         { text: 'Go on', value: 'Go_on_23' }
-    //     ]
-    // },
-    // {
-    //     id: 23,
-    //     contents: [
-    //         `Not knowing and not feeling in control makes us anxious. One way we try to get back a sense of control is by expecting the worst or
-    //         catastrophizing. The problem is that then we act accordingly (e.g. treating a low before it even )`,
-    //     ],
-    //     options: [
-    //         { text: 'Ok', value: 'Ok_24' },
-    //         { text: 'Go on', value: 'Go_on_24' }
-    //     ]
-    // },
-    // {
-    //     id: 24,
-    //     contents: [
-    //         `Let me give you an example`,
-    //     ],
-    //     options: [
-    //     ]
-    // },
-    // {
-    //     id: 25,
-    //     contents: [
-    //         `I just know if I ignore that diagonal down arrow. I'll have a low blood sugar.`,
-    //         `I have no idea how exercise is going to affect my BG, so best to avoid it altogether.`,
-    //         `I am not going to change my diet because I dont' know how it will affect my BG.`
-    //     ],
-    //     options: [
-    //         { text: 'Give another example', value: 'Give_another_example_25' },
-    //         { text: 'Go on', value: 'Go_on_26' }
-    //     ]
-    // },
-    // {
-    //     id: 26,
-    //     contents: [
-    //         `Now that you have learned about thinking traps, it's time to have some fun! Let's use some detective thinking
-    //          to see if any of your thoughts about diabetes fall into these traps.
-    //          \n What's your thought?`,
-    //     ],
-    //     options: []
-    // },
-    // {
-    //     id: 27,
-    //     contents: [
-    //         `Is it possible this is a thinking trap?`,
-    //     ],
-    //     options: [
-    //         { text: 'Yes', value: 'Yes_28' },
-    //         { text: 'I need more help', value: 'I_need_more_help_28' }
-    //     ]
-    // },
-    // {
-    //     id: 28,
-    //     contents: [
-    //         `The good news is that, once we learn to detect thinking traps, we can learn to climb out of them/avoid them all together`,
-    //     ],
-    //     options: [
-    //         { text: 'Ok', value: 'Ok_29' },
-    //         { text: 'Go on', value: 'Go_on_29' }
-    //     ]
-    // },
-    // {
-    //     id: 29,
-    //     contents: [
-    //         `Ask your self these five questions
-    //         1. what evidence supports this unhelpful thought? What is the evidence against it?
-    //         2. what would I say to a friend in my situation?
-    //         3. how have similar situations gone in the past?
-    //         4. how probable somthing is to happen - it may be possible but not probable.
-    //         5. what's the worst thing that could happen? Would you be able to deal with that? how`,
-    //     ],
-    //     options: [
-    //         { text: 'Ok', value: 'Ok_-1' },
-    //         { text: 'Go on', value: 'Go_on_-1' }
-    //     ]
-    // },
+    {
+        id: 4,
+        content: 'Would you like to learn more about different kinds of thinking traps?',
+        options: [
+            { text: 'Yes', value: 5 },
+            { text: 'Not right now', value: -100 }
+        ]
+    },
+    {
+        id: 5,
+        content: 'What would you like to select?',
+        options: [
+            { text: 'All or nothing thinking', value: 6 },
+            { text: 'Catastrophizing', value: 9 },
+            { text: 'Mind Reading', value: 11 },
+            { text: 'Overresponsibility', value: 13 },
+            { text: 'Intolerance of uncertainty', value: 16 }
+        ]
+    },
+    {
+        id: 6,
+        contents: [
+            "All or nothing is a thinking trap that involves thinking in extremes, as if there are only two options when things so wrong"],
+        options: [
+            { text: 'Ok', value: 7 },
+            { text: 'Go on', value: 7 }
+        ]
+    },
+    {
+        id: 7,
+        content: 'All or nothing thinking also relates to perfectionism. For example expecting your blood sugars to always be in range.',
+        options: [
+            { text: 'Do tell eddii', value: 8 },
+        ]
+    },
+    {
+        id: 8,
+        content: 'Let me give you an example',
+        options: [],
+        examples: [
+            [
+                {
+                    content: '"I never count carbs correctly and I am always running high"',
+                    options: [
+                        { text: 'Give another example', value: 8 },
+                        { text: 'Move to next thinking trap', value: 9 }
+                    ]
+                }
+            ], [
+                {
+                    content: '"I am never going to have a normal life! I will always have shortcomings because of my T1D."',
+                    options: [
+                        { text: 'Give another example', value: 8 },
+                        { text: 'Move to next thinking trap', value: 9 }
+                    ]
+                }
+            ], [
+                {
+                    content: 'I can never seem to keep my blood sugar in target range. I always overtreat my lows',
+                    options: [
+                        { text: 'Give another example', value: 8 },
+                        { text: 'Move to next thinking trap', value: 9 }
+                    ]
+                }
+            ]
+        ]
+    },
+    {
+        id: 9,
+        content: 'One thinking trap is Catastrophizing. Catasrtophizing is expecting the worst',
+        options: [
+            { text: 'Ok', value: 10 },
+            { text: 'Go on', value: 10 }
+        ]
+    },
+    {
+        id: 10,
+        content: 'Let me give you an example',
+        options: [],
+        examples: [
+            [
+                {
+                    content: 'My blood sugar is high again. There is no way I am going to avoid complications long-term',
+                    options: [
+                        { text: 'Give another example', value: 10 },
+                        { text: 'Move to next thinking trap', value: 11 }
+                    ]
+                }
+            ], [
+                {
+                    content: 'With all these devices attached to me and my highs and lows, no one is ever going to want to date me',
+                    options: [
+                        { text: 'Give another example', value: 10 },
+                        { text: 'Move to next thinking trap', value: 11 }
+                    ]
+                }
+            ], [
+                {
+                    content: 'If my blood sugar goes low I will probably pass out and embarrass myself',
+                    options: [
+                        { text: 'Give another example', value: 10 },
+                        { text: 'Move to next thinking trap', value: 11 }
+                    ]
+                }
+            ]
+        ]
+    },
+    {
+        id: 11,
+        content: `Mind reading assumes we know what other people are thinking and assuming it's probably negative and about us`,
+        options: [
+            { text: 'Ok', value: 12 },
+            { text: 'Go on', value: 12 }
+        ]
+    },
+    {
+        id: 12,
+        content: 'Let me give you an example',
+        options: [],
+        examples: [
+            [
+                {
+                    content: 'The doctor is going to see my numbers and think that I am bad at diabetes',
+                    options: [
+                        { text: 'Give another example', value: 12 },
+                        { text: 'Move to next thinking trap', value: 13 }
+                    ]
+                }
+            ], [
+                {
+                    content: `As soon as someone hears I have disabetes they will think I'm sick and won't want to be friends with me`,
+                    options: [
+                        { text: 'Give another example', value: 12 },
+                        { text: 'Move to next thinking trap', value: 13 }
+                    ]
+                }
+            ], [
+                {
+                    content: `My colleges view me as a disabled person and unable to perform my job because I live with T1D`,
+                    options: [
+                        { text: 'Give another example', value: 12 },
+                        { text: 'Move to next thinking trap', value: 13 }
+                    ]
+                }
+            ], [
+                {
+                    content: `The doctor is going to see my numbers and think I don't care.`,
+                    options: [
+                        { text: 'Give another example', value: 12 },
+                        { text: 'Move to next thinking trap', value: 13 }
+                    ]
+                }
+            ]
+        ]
+    },
+    {
+        id: 13,
+        content: `Overresponsibility ignores other aspects of a situation or the possiblity that other people might be responsible 
+        to help us - like our healthcare providers, support system, and eddii`,
+
+        options: [
+            { text: 'Ok', value: 14 },
+            { text: 'Go on', value: 14 }
+        ]
+    },
+    {
+        id: 14,
+        content: `When trying to detect this thinking trap, lookout for words like "should, never, always, and have to"`,
+
+        options: [
+            { text: 'Ok', value: 15 },
+            { text: 'Go on', value: 15 }
+        ]
+    },
+    {
+        id: 15,
+        content: 'Let me give you an example',
+        options: [],
+        examples: [
+            [
+                {
+                    content: 'I should always be able to figure out how to exercise without going low every time',
+                    options: [
+                        { text: 'Give another example', value: 15 },
+                        { text: 'Move to next thinking trap', value: 16 }
+                    ]
+                }
+            ], [
+                {
+                    content: `I should know how to keep my BG in range of most of the time after all these years living with diabetes`,
+                    options: [
+                        { text: 'Give another example', value: 15 },
+                        { text: 'Move to next thinking trap', value: 16 }
+                    ]
+                }
+            ], [
+                {
+                    content: `I am still getting carb counting wrong and getting spikes. No one to blame but myself`,
+                    options: [
+                        { text: 'Give another example', value: 15 },
+                        { text: 'Move to next thinking trap', value: 16 }
+                    ]
+                }
+            ]
+        ]
+    },
+    {
+        id: 16,
+        contents: [
+            `Not knowing and not feeling in control makes us anxious. One way we try to get back a sense of control is by expecting the worst or
+            catastrophizing. The problem is that then we act accordingly (e.g. treating a low before it even )`,
+        ],
+        options: [
+            { text: 'Ok', value: 17 },
+            { text: 'Go on', value: 17 }
+        ]
+    },
+    {
+        id: 17,
+        content: 'Let me give you an example',
+        options: [],
+        examples: [
+            [
+                {
+                    content: `I just know if I ignore that diagonal down arrow. I'll have a low blood sugar.`,
+                    options: [
+                        { text: 'Give another example', value: 17 },
+                        { text: 'Right', value: 18 }
+                    ]
+                }
+            ], [
+                {
+                    content: `I have no idea how exercise is going to affect my BG, so best to avoid it altogether.`,
+                    options: [
+                        { text: 'Give another example', value: 17 },
+                        { text: 'Right', value: 18 },
+                    ]
+                }
+            ], [
+                {
+                    content: `I am not going to change my diet because I dont' know how it will affect my BG.`,
+                    options: [
+                        { text: 'Give another example', value: 17 },
+                        { text: 'Right', value: 18 }
+                    ]
+                }
+            ]
+        ]
+    },
+    {
+        id: 18,
+        content:
+            `Now that you have learned about thinking traps, it's time to have some fun! Let's use some detective thinking
+             to see if any of your thoughts about diabetes fall into these traps.
+             \n What's your thought?`,
+        options: []
+    },
+    {
+        id: 19,
+        contents: [
+            `Is it possible this is a thinking trap?`,
+        ],
+        options: [
+            { text: 'Yes', value: 19 },
+            { text: 'I need more help', value: 19 }
+        ]
+    },
+    {
+        id: 20,
+        contents: [
+            `The good news is that, once we learn to detect thinking traps, we can learn to climb out of them/avoid them all together`,
+        ],
+        options: [
+            { text: 'Ok', value: 21 },
+            { text: 'Go on', value: 21 }
+        ]
+    },
+    {
+        id: 21,
+        contents: [
+            `Ask your self these five questions
+            1. what evidence supports this unhelpful thought? What is the evidence against it?
+            2. what would I say to a friend in my situation?
+            3. how have similar situations gone in the past?
+            4. how probable somthing is to happen - it may be possible but not probable.
+            5. what's the worst thing that could happen? Would you be able to deal with that? how`,
+        ],
+        options: [
+            { text: 'All or nothing thinking', value: 0 },
+            { text: 'Over generalizing', value: 0 },
+            { text: 'Mental Filter', value: 0 },
+            { text: 'Disqualifying the positive', value: 0 },
+            { text: 'Jumping to conclusions', value: 0 },
+            { text: 'Magnification and minimisation', value: 0 }, 
+            { text: 'Emotional reasoning', value: 0 }, 
+            { text: 'SHOULD MUST', value: 0 }, 
+            { text: 'Labeling', value: 0 },
+            { text: 'Personalization', value: 0 },    
+        ]
+    },
 ];
 
 export type Node = {

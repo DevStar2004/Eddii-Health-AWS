@@ -514,11 +514,15 @@ export const handler = async (event: LexV2Event): Promise<LexV2Result> => {
     } else if (sessionStateIntentName === 'CBT') {
         const confirmationState = event.sessionState.intent.confirmationState || 'None';
         const activityChoice: string = event.sessionState.intent.slots?.ActivityChoice?.value?.originalValue || '';
+
         let cbtIndex, cbtExampleIndex, cbtPartIndex;
-        let node = getData(cbtIndex);
         let options = JSON.parse(sessionAttributes['OPTIONS'] || '{}');
-        cbtIndex = options[activityChoice] || 0;
         const cbtLength = getCBTLength();
+
+        cbtIndex = options[activityChoice] || 0;
+        cbtExampleIndex = isNaN(parseInt(sessionAttributes['CBT_EXAMPLE_INDEX'])) ? -1 : parseInt(sessionAttributes['CBT_EXAMPLE_INDEX']);
+        cbtPartIndex = isNaN(parseInt(sessionAttributes['CBT_PART_INDEX'])) ? -1 : parseInt(sessionAttributes['CBT_PART_INDEX']);
+        let node = getData(cbtIndex);
 
         const messages: LexV2Message[] = [];
 
@@ -548,7 +552,33 @@ export const handler = async (event: LexV2Event): Promise<LexV2Result> => {
             };
         }
 
-        if (cbtIndex == 2) {
+        if (cbtIndex !== 2 && cbtIndex !== 8 && cbtIndex !== 10 && cbtIndex !== 12 && cbtIndex !== 15 && cbtIndex !== 17) {
+            messages.push({
+                contentType: 'PlainText',
+                content: node.content,
+            });
+            if (node.options.length > 0) {
+                messages.push({
+                    contentType: 'ImageResponseCard',
+                    imageResponseCard: {
+                        title: 'Select an option',
+                        buttons: node.options.map(option => ({
+                            text: option.text,
+                            value: option.text.toLowerCase().replace(/\s+/g, '_')
+                        }))
+                    }
+                });
+                options = node.options.reduce((acc, option) => {
+                    let key = option.text.toLowerCase().replace(/\s+/g, '_');
+                    acc[key] = option.value;
+                    return acc;
+                }, {});
+            }
+            if (cbtIndex === 1) cbtIndex = 2;
+            if (cbtIndex === 14) cbtIndex = 15;
+        }
+        if (cbtIndex === 2 || cbtIndex === 8 || cbtIndex === 10 || cbtIndex === 12 || cbtIndex === 15 || cbtIndex === 17) {
+            node = getData(cbtIndex);
             if (cbtExampleIndex === -1 && cbtPartIndex === -1) { // start this flow
                 cbtExampleIndex = 0; cbtPartIndex = 0;
                 messages.push({
@@ -573,7 +603,7 @@ export const handler = async (event: LexV2Event): Promise<LexV2Result> => {
                     return acc;
                 }, {});
             }
-            else {
+            if (node.options.length === 0 || (cbtExampleIndex !== -1 && cbtPartIndex !== -1)) {
                 let exampleNode = node.examples[cbtExampleIndex][cbtPartIndex];
                 messages.push({
                     contentType: 'PlainText',
@@ -608,33 +638,11 @@ export const handler = async (event: LexV2Event): Promise<LexV2Result> => {
                 }
             }
         }
-        else {
-            messages.push({
-                contentType: 'PlainText',
-                content: node.content,
-            });
-            if (node.options.length > 0) {
-                messages.push({
-                    contentType: 'ImageResponseCard',
-                    imageResponseCard: {
-                        title: 'Select an option',
-                        buttons: node.options.map(option => ({
-                            text: option.text,
-                            value: option.text.toLowerCase().replace(/\s+/g, '_')
-                        }))
-                    }
-                });
-                options = node.options.reduce((acc, option) => {
-                    let key = option.text.toLowerCase().replace(/\s+/g, '_');
-                    acc[key] = option.value;
-                    return acc;
-                }, {});
-            }
-        }
 
         sessionAttributes['OPTIONS'] = JSON.stringify(options);
         sessionAttributes['CBT_EXAMPLE_INDEX'] = cbtExampleIndex !== -1 ? cbtExampleIndex.toString() : undefined;
         sessionAttributes['CBT_PART_INDEX'] = cbtPartIndex !== -1 ? cbtPartIndex.toString() : undefined;
+
         return {
             sessionState: {
                 sessionAttributes: sessionAttributes,
