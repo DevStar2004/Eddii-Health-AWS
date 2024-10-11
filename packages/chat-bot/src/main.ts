@@ -388,7 +388,6 @@ export const handler = async (event: LexV2Event): Promise<LexV2Result> => {
     } else if (sessionStateIntentName === 'Feelings') {
         const confirmationState = event.sessionState.intent.confirmationState || 'None';
         const feelingResponse = event.sessionState.intent.slots?.FeelingsResponse?.value?.originalValue;
-
         // const activityChoice = event.sessionState.intent.slots?.ActivityChoice?.value?.originalValue;
 
         if (confirmationState === 'Denied') {
@@ -515,13 +514,15 @@ export const handler = async (event: LexV2Event): Promise<LexV2Result> => {
         const confirmationState = event.sessionState.intent.confirmationState || 'None';
         const activityChoice: string = event.sessionState.intent.slots?.ActivityChoice?.value?.originalValue || '';
 
-        let cbtIndex, cbtExampleIndex, cbtPartIndex;
+        let cbtIndex, cbtExampleIndex, cbtPartIndex, prevCBTIndex;
         let options = JSON.parse(sessionAttributes['OPTIONS'] || '{}');
         const cbtLength = getCBTLength();
 
         cbtIndex = options[activityChoice] || 0;
         cbtExampleIndex = isNaN(parseInt(sessionAttributes['CBT_EXAMPLE_INDEX'])) ? -1 : parseInt(sessionAttributes['CBT_EXAMPLE_INDEX']);
         cbtPartIndex = isNaN(parseInt(sessionAttributes['CBT_PART_INDEX'])) ? -1 : parseInt(sessionAttributes['CBT_PART_INDEX']);
+        prevCBTIndex = isNaN(parseInt(sessionAttributes['PREV_CBT_INDEX'])) ? -1 : parseInt(sessionAttributes['PREV_CBT_INDEX']);
+
         let node = getData(cbtIndex);
 
         const messages: LexV2Message[] = [];
@@ -552,6 +553,44 @@ export const handler = async (event: LexV2Event): Promise<LexV2Result> => {
             };
         }
 
+        if (cbtIndex === -1) {
+            // Back to the eddii toolbox
+            messages.push({
+                contentType: 'PlainText',
+                content: getFeelingsResponse('sad')[1].content
+            });
+            if (getFeelingsResponse('sad')[1].options.length > 0) {
+                messages.push({
+                    contentType: 'ImageResponseCard',
+                    imageResponseCard: {
+                        title: 'Select an option',
+                        buttons: getFeelingsResponse('sad')[1].options.map(option => ({
+                            text: option,
+                            value: option
+                        }))
+                    }
+                });
+            }
+            return {
+                sessionState: {
+                    sessionAttributes: sessionAttributes,
+                    intent: {
+                        name: 'Feelings',
+                        state: 'Fulfilled'
+                    },
+                    dialogAction: {
+                        type: 'Close',
+                    }
+                },
+                messages: messages,
+            };
+        }
+
+        if (prevCBTIndex === 18) cbtIndex = 19;
+        if (prevCBTIndex != cbtIndex) {
+            cbtExampleIndex = -1;
+            cbtPartIndex = -1;
+        }
         if (cbtIndex !== 2 && cbtIndex !== 8 && cbtIndex !== 10 && cbtIndex !== 12 && cbtIndex !== 15 && cbtIndex !== 17) {
             messages.push({
                 contentType: 'PlainText',
@@ -576,11 +615,8 @@ export const handler = async (event: LexV2Event): Promise<LexV2Result> => {
             }
             if (cbtIndex === 1) cbtIndex = 2;
             if (cbtIndex === 14) cbtIndex = 15;
-        }
-        if (cbtIndex === 2 || cbtIndex === 8 || cbtIndex === 10 || cbtIndex === 12 || cbtIndex === 15 || cbtIndex === 17) {
-            node = getData(cbtIndex);
-            if (cbtExampleIndex === -1 && cbtPartIndex === -1) { // start this flow
-                cbtExampleIndex = 0; cbtPartIndex = 0;
+            if (cbtIndex >= 22 && cbtIndex <= 31) {
+                cbtIndex = 21; node = getData(cbtIndex);
                 messages.push({
                     contentType: 'PlainText',
                     content: node.content,
@@ -596,76 +632,106 @@ export const handler = async (event: LexV2Event): Promise<LexV2Result> => {
                             }))
                         }
                     });
-                }
-                options = node.options.reduce((acc, option) => {
-                    let key = option.text.toLowerCase().replace(/\s+/g, '_');
-                    acc[key] = option.value;
-                    return acc;
-                }, {});
-            }
-            if (node.options.length === 0 || (cbtExampleIndex !== -1 && cbtPartIndex !== -1)) {
-                let exampleNode = node.examples[cbtExampleIndex][cbtPartIndex];
-                messages.push({
-                    contentType: 'PlainText',
-                    content: exampleNode.content,
-                });
-                if (exampleNode.options.length > 0) {
-                    messages.push({
-                        contentType: 'ImageResponseCard',
-                        imageResponseCard: {
-                            title: 'Select an option',
-                            buttons: ((cbtExampleIndex === (node.examples.length - 1) &&
-                                cbtPartIndex === (node.examples[cbtExampleIndex].length - 1)) ?
-                                exampleNode.options.filter(option => option.text !== 'Give another example') : exampleNode.options).map(option => ({
-                                    text: option.text,
-                                    value: option.text.toLowerCase().replace(/\s+/g, '_')
-                                }))
-                        }
-                    });
-                    options = exampleNode.options.reduce((acc, option) => {
+                    options = node.options.reduce((acc, option) => {
                         let key = option.text.toLowerCase().replace(/\s+/g, '_');
                         acc[key] = option.value;
                         return acc;
                     }, {});
                 }
-                cbtPartIndex += 1;
-                if (cbtPartIndex >= node.examples[cbtExampleIndex].length) {
-                    cbtExampleIndex += 1; cbtPartIndex = 0;
-                    if (cbtExampleIndex >= node.examples.length) {
-                        cbtExampleIndex = -1;
-                        cbtPartIndex = -1;
+            }
+            if (cbtIndex === 2 || cbtIndex === 8 || cbtIndex === 10 || cbtIndex === 12 || cbtIndex === 15 || cbtIndex === 17) {
+                node = getData(cbtIndex);
+                let isFirstStep: boolean = false;
+                if (cbtExampleIndex === -1 && cbtPartIndex === -1) { // start this flow
+                    cbtExampleIndex = 0; cbtPartIndex = 0;
+                    isFirstStep = true;
+                    messages.push({
+                        contentType: 'PlainText',
+                        content: node.content,
+                    });
+                    if (node.options.length > 0) {
+                        messages.push({
+                            contentType: 'ImageResponseCard',
+                            imageResponseCard: {
+                                title: 'Select an option',
+                                buttons: node.options.map(option => ({
+                                    text: option.text,
+                                    value: option.text.toLowerCase().replace(/\s+/g, '_')
+                                }))
+                            }
+                        });
+                    }
+                    options = node.options.reduce((acc, option) => {
+                        let key = option.text.toLowerCase().replace(/\s+/g, '_');
+                        acc[key] = option.value;
+                        return acc;
+                    }, {});
+                }
+                if (node.options.length == 0 || (cbtExampleIndex !== -1 && cbtPartIndex !== -1 && isFirstStep === false)) {
+                    let exampleNode = node.examples[cbtExampleIndex][cbtPartIndex];
+                    messages.push({
+                        contentType: 'PlainText',
+                        content: exampleNode.content,
+                    });
+                    if (exampleNode.options.length > 0) {
+                        messages.push({
+                            contentType: 'ImageResponseCard',
+                            imageResponseCard: {
+                                title: 'Select an option',
+                                buttons: ((cbtExampleIndex === (node.examples.length - 1) &&
+                                    cbtPartIndex === (node.examples[cbtExampleIndex].length - 1)) ?
+                                    exampleNode.options.filter(option => option.text !== 'Give another example') : exampleNode.options).map(option => ({
+                                        text: option.text,
+                                        value: option.text.toLowerCase().replace(/\s+/g, '_')
+                                    }))
+                            }
+                        });
+                        options = exampleNode.options.reduce((acc, option) => {
+                            let key = option.text.toLowerCase().replace(/\s+/g, '_');
+                            acc[key] = option.value;
+                            return acc;
+                        }, {});
+                    }
+                    cbtPartIndex += 1;
+                    if (cbtPartIndex >= node.examples[cbtExampleIndex].length) {
+                        cbtExampleIndex += 1; cbtPartIndex = 0;
+                        if (cbtExampleIndex >= node.examples.length) {
+                            cbtExampleIndex = -1;
+                            cbtPartIndex = -1;
+                        }
                     }
                 }
             }
-        }
 
-        sessionAttributes['OPTIONS'] = JSON.stringify(options);
-        sessionAttributes['CBT_EXAMPLE_INDEX'] = cbtExampleIndex !== -1 ? cbtExampleIndex.toString() : undefined;
-        sessionAttributes['CBT_PART_INDEX'] = cbtPartIndex !== -1 ? cbtPartIndex.toString() : undefined;
+            sessionAttributes['OPTIONS'] = JSON.stringify(options);
+            sessionAttributes['CBT_EXAMPLE_INDEX'] = cbtExampleIndex !== -1 ? cbtExampleIndex.toString() : undefined;
+            sessionAttributes['CBT_PART_INDEX'] = cbtPartIndex !== -1 ? cbtPartIndex.toString() : undefined;
+            sessionAttributes['PREV_CBT_INDEX'] = cbtIndex >= 0 ? cbtIndex.toString() : undefined;
 
-        return {
-            sessionState: {
-                sessionAttributes: sessionAttributes,
-                intent: {
-                    name: event.sessionState.intent.name,
-                    state:
-                        cbtIndex >= (cbtLength - 1) ? 'Fulfilled' : 'InProgress',
+            return {
+                sessionState: {
+                    sessionAttributes: sessionAttributes,
+                    intent: {
+                        name: event.sessionState.intent.name,
+                        state:
+                            cbtIndex >= (cbtLength + 10) ? 'Fulfilled' : 'InProgress',
+                    },
+                    dialogAction:
+                        cbtIndex >= (cbtLength + 10)
+                            ? {
+                                type: 'Close',
+                            }
+                            : {
+                                type: 'ElicitSlot',
+                                slotToElicit: 'ActivityChoice',
+                                slotElicitationStyle: 'Default',
+                            },
                 },
-                dialogAction:
-                    cbtIndex >= (cbtLength - 1)
-                        ? {
-                            type: 'Close',
-                        }
-                        : {
-                            type: 'ElicitSlot',
-                            slotToElicit: 'ActivityChoice',
-                            slotElicitationStyle: 'Default',
-                        },
-            },
-            messages: messages,
-        };
+                messages: messages,
+            };
+        }
+        else {
+            throw new Error('Intent not supported');
+        }
     }
-    else {
-        throw new Error('Intent not supported');
-    }
-};
+}

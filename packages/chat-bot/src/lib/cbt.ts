@@ -20,7 +20,7 @@ export const CBT = [
         content: 'Let me give you an example',
         options: [
             { text: 'Ok', value: 2 },
-            { text: 'End', value: 2 }
+            { text: 'End', value: -1 }
         ],
         examples: [
             [
@@ -113,7 +113,7 @@ export const CBT = [
         content: 'Would you like to learn more about different kinds of thinking traps?',
         options: [
             { text: 'Yes', value: 5 },
-            { text: 'Not right now', value: -100 }
+            { text: 'Not right now', value: -1 }
         ]
     },
     {
@@ -129,8 +129,7 @@ export const CBT = [
     },
     {
         id: 6,
-        contents: [
-            "All or nothing is a thinking trap that involves thinking in extremes, as if there are only two options when things so wrong"],
+        content: `All or nothing is a thinking trap that involves thinking in extremes, as if there are only two options when things so wrong`,
         options: [
             { text: 'Ok', value: 7 },
             { text: 'Go on', value: 7 }
@@ -316,10 +315,9 @@ export const CBT = [
     },
     {
         id: 16,
-        contents: [
+        content:
             `Not knowing and not feeling in control makes us anxious. One way we try to get back a sense of control is by expecting the worst or
             catastrophizing. The problem is that then we act accordingly (e.g. treating a low before it even )`,
-        ],
         options: [
             { text: 'Ok', value: 17 },
             { text: 'Go on', value: 17 }
@@ -367,9 +365,7 @@ export const CBT = [
     },
     {
         id: 19,
-        contents: [
-            `Is it possible this is a thinking trap?`,
-        ],
+        content: `Is it possible this is a thinking trap?`,
         options: [
             { text: 'Yes', value: 19 },
             { text: 'I need more help', value: 19 }
@@ -377,9 +373,7 @@ export const CBT = [
     },
     {
         id: 20,
-        contents: [
-            `The good news is that, once we learn to detect thinking traps, we can learn to climb out of them/avoid them all together`,
-        ],
+        content: `The good news is that, once we learn to detect thinking traps, we can learn to climb out of them/avoid them all together`,
         options: [
             { text: 'Ok', value: 21 },
             { text: 'Go on', value: 21 }
@@ -387,27 +381,86 @@ export const CBT = [
     },
     {
         id: 21,
-        contents: [
+        content:
             `Ask your self these five questions
             1. what evidence supports this unhelpful thought? What is the evidence against it?
             2. what would I say to a friend in my situation?
             3. how have similar situations gone in the past?
             4. how probable somthing is to happen - it may be possible but not probable.
             5. what's the worst thing that could happen? Would you be able to deal with that? how`,
-        ],
         options: [
-            { text: 'All or nothing thinking', value: 0 },
-            { text: 'Over generalizing', value: 0 },
-            { text: 'Mental Filter', value: 0 },
-            { text: 'Disqualifying the positive', value: 0 },
-            { text: 'Jumping to conclusions', value: 0 },
-            { text: 'Magnification and minimisation', value: 0 }, 
-            { text: 'Emotional reasoning', value: 0 }, 
-            { text: 'SHOULD MUST', value: 0 }, 
-            { text: 'Labeling', value: 0 },
-            { text: 'Personalization', value: 0 },    
+            { text: 'All or nothing thinking', value: 22 },
+            { text: 'Over generalizing', value: 23 },
+            { text: 'Mental Filter', value: 24 },
+            { text: 'Disqualifying the positive', value: 25 },
+            { text: 'Jumping to conclusions', value: 26 },
+            { text: 'Magnification and minimisation', value: 27 },
+            { text: 'Emotional reasoning', value: 28 },
+            { text: 'SHOULD MUST', value: 29 },
+            { text: 'Labeling', value: 30 },
+            { text: 'Personalization', value: 31 },
         ]
     },
+    {
+        id: 22,
+        content: `Sometimes called 'All or nothing' thinking For instance, thinkig:
+        if I'm not perfect I have failed Either I do it right or not at all`,
+        options: []
+    },
+    {
+        id: 23,
+        content: `Seeing a pattern based upon a single event, or being overly broad in the conclusion we draw 
+        Everything is always rubbish, Nothing good ever happens`,
+        options: []
+    },
+    {
+        id: 24,
+        content: `Only paying attention to certain types of evidence, Nothing our failures but not seeing our success`,
+        options: []
+    },
+    {
+        id: 25,
+        content: `Discounting the good things that have happened or that you have done for some reason or another. That doesn't count`,
+        options: []
+    },
+    {
+        id: 26,
+        content: `There are two key types of jumping to conclusions
+        -Mind reading: Imagining we know what others are thinking
+        -Fortune teling: predicting the future`,
+        options: []
+    },
+    {
+        id: 27,
+        content: `Blowing things out of proportion (catastrophizing) or inapprotiately shrinking something to make it seem less important`,
+        options: []
+    },
+    {
+        id: 28,
+        content: `Assuming that because we feel a certain way what we think must be true
+        I feel embrassed so I must be an idiot`,
+        options: []
+    },
+    {
+        id: 29,
+        content: `Using critical worked like 'should,' 'must' and 'ought,' can make us feel guilty, or like we have already failed.
+        If we apply 'should' to other people the result if ofen frustration`,
+        options: []
+    },
+    {
+        id: 30,
+        content: `Assigning labels to ourselves or other people
+        I'm a loser
+        They are completely useless
+        I'm a failure`,
+        options: []
+    },
+    {
+        id: 31,
+        content: `Blaming yourself or taking responsibility for something that wasn't completely your fault
+        Conversely, blaming other people for something that was your fault`,
+        options: []
+    }
 ];
 
 export type Node = {
